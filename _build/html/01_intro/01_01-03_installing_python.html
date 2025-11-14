@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.2. Εγκατάσταση της Python &#8212; Introduction to Python for Humanists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_intro/01_01-03_installing_python';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.3. Βασικά Στοιχεία Προγραμματισμού" href="01_01-04_coding_basics.html" />
+    <link rel="prev" title="1.1. Εισαγωγή στην Python" href="01_01-02_introduction_to_python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/chapman-logo.jpg" class="logo__image only-light" alt="Introduction to Python for Humanists - Home"/>
+    <script>document.write(`<img src="../_static/chapman-logo.jpg" class="logo__image only-dark" alt="Introduction to Python for Humanists - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <p align="center">INTRODUCTION TO PYTHON FOR HUMANISTS</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PREFACE</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_preface/00_01_preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART ONE: The Basics of Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01_01-01_intro.html">1. Εισαγωγή στην Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_01-02_introduction_to_python.html">1.1. Εισαγωγή στην Python</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. Εγκατάσταση της Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_01-04_coding_basics.html">1.3. Βασικά Στοιχεία Προγραμματισμού</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_02-01_intro.html">2. Δεδομένα και Δομές Δεδομένων</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_02-02_data.html">2.1. Εισαγωγή στα Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_02-03_data_structures.html">2.2. Εισαγωγή στις Δομές Δεδομένων</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_03-01_intro.html">3. Βρόχοι και Λογική</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_03-02_loops.html">3.1. Εισαγωγή στους Βρόχους</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_03-03_conditionals.html">3.2. Δηλώσεις Συνθήκης</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_04-01_intro.html">4. Επίσημος Προγραμματισμός: Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_04-02_functions.html">4.1. Συναρτήσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_04-03_classes.html">4.2. Κλάσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_04-04_libraries.html">4.3. Βιβλιοθήκες στην Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_05-01_intro.html">5. Εργασία με Εξωτερικά Δεδομένα</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_05-02_texts.html">5.1. Εργασία με Κειμενικά Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_05-03_json.html">5.2. Εργασία με Δεδομένα JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_05-04_multiple_files.html">5.3. Εργασία με Πολλαπλά Αρχεία</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_06-01_intro.html">6. Εργασία με Δεδομένα στο Ιστό</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_06-02_html.html">6.1. Εισαγωγή στην HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_06-03_scraping_pages.html">6.2. Scraping Ιστοσελίδων με τις Requests και BeautifulSoup</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART TWO: Data Analysis with Pandas (Work in Progress)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_01_01_intro.html">1. Introduction to Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_02_introduction_to_pandas.html">1.1. Introduction to Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_03_the_basics.html">1.2. The Basics of Pandas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_02_01_intro.html">2. Working with Data in Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_02_finding_data.html">2.1. Finding Data in DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_03_organizing_data.html">2.2. Organizing the DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_04_cleaning_data.html">2.3. Cleaning the DataFrame</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_03_01_intro.html">3. Searching for Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_02_advanced_strings.html">3.1. Advanced Searching on Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_03_advanced_querying.html">3.2. Filter and Querying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_04_advanced_grouping.html">3.3. Grouping with Groupby()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_04_01_intro.html">4. Advanced Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_02_pandas_and_plots.html">4.1. Plotting Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_03_graphing_networks_with_pandas.html">4.2. Graphing Network Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_04_time_series_data.html">4.3. Time Series Data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART THREE: Natural Language Processing with spaCy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_01_01_intro.html">1. Introduction to spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_02_install_and_containers.html">1.1. The Basics of spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_03_linguistic_annotations.html">1.2. Getting Started with spaCy and its Linguistic Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_04_pipelines.html">1.3. spaCy’s Pipelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_02_01_intro.html">2. Rules-Based spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_02_entityruler.html">2.1. The EntityRuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_03_matcher.html">2.2. The Matcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_04_phrase_matcher.html">2.3. The PhraseMatcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_06_simple_regex.html">2.4. Using RegEx with spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_07_complex_regex.html">2.5. Working with Multi-Word Token Entities and RegEx in spaCy 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_03_01_intro.html">3. Solving a Domain-Specific Problem: A Case Study with Holocaust NER</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_02_cultivating_concentration_camp_dataset.html">3.1. Cultivating Good Datasets for Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_03_challenges.html">3.2. The Challenges of Holocaust NER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_04_building_holocaust_pipeline_rules_based.html">3.3. Creating Rules-Based Pipeline for Holocaust Documents</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FOUR: OTHER APPLICATIONS OF PYTHON </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_topic_modeling/04_01_01_intro.html">1. Topic Modeling in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_02_topic_modeling_concepts.html">1.1. What is Topic Modeling?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_03_clusters.html">1.2. Topics and Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_04_bigrams.html">1.3. Bigrams and Trigrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_02_lda_concept.html">1.4. LDA Topic Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_06_lda.html">1.5. Creating LDA in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_03_embedding_clustering.html">1.6. Transformer Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_04_top2vec.html">1.7. Top2Vec in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_booknlp/01_01_intro.html">2. Text Analysis with BookNLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/01_intro.html">2.1. Introduction to BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/02_starting.html">2.2. Getting Started with BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/03_files.html">2.3. The Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/04_character_analysis.html">2.4. Character Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/05_events.html">2.5. Events Analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_sna/06_01_01_intro.html">3. Social Network Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_02_basics.html">3.1. The Basic Concepts of Social Network Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_03_networkx.html">3.2. Introduction to NetworkX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_04_pyvis_basics.html">3.3. Producing Dynamic Graphs with PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_05_networkx_pyvis.html">3.4. NetworkX and PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_06_node_color.html">3.5. Adding Color to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_07_applied.html">3.6. SNA on Humanities Data: Structuring the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_08_applied2.html">3.7. SNA on Humanities Data: Creating the Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FIVE: DESIGNING AN APPLICATION WITH STREAMLIT</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_01_01_intro.html">1. Introduction to Streamlit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_02_streamlit.html">1.1. Creating Our First App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_03_displaying_data.html">1.2. Displaying Data in Streamlit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_04_input_widgets.html">1.3. Streamlit Input Widgets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_02_01_intro.html">2. Advanced Streamlit Features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_02_charts.html">2.1. Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_03_layout_design.html">2.2. Layout Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_04_cache.html">2.3. Streamlit Cache and Session States</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_05_custom_html.html">2.5. Custom HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_06_multiple_pages.html">2.6. Multi-Page Applications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_03_01_intro.html">3. Building a Database Query Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_02_database_query_app.html">3.1. Building a Database Query Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_03_cloud.html">3.2. Deploying an App in the Cloud with Streamlit Share</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/wjbmattingly/python_for_dh/blob/main/01_intro/01_01-03_installing_python.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/edit/main/01_intro/01_01-03_installing_python.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/issues/new?title=Issue%20on%20page%20%2F01_intro/01_01-03_installing_python.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_intro/01_01-03_installing_python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Εγκατάσταση της Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trinket">1.2.1. Trinket</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">1.2.2. Χρήση του Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binder-jupyterbook">1.2.3. Χρήση του Binder από αυτό το JupyterBook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-online">1.2.4. Χρήση Jupyter Notebooks Online</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.5. Εγκατάσταση της Python τοπικά</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-navigator">1.2.5.1. Λήψη του Anaconda Navigator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.5.2. Χρήση του Anaconda Navigator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.2.5.3. Εγκατάσταση του Jupyter-Lab</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.6. Συμπέρασμα</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="python">
+<h1><span class="section-number">1.2. </span>Εγκατάσταση της Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
+<p>Το πιο δύσκολο πράγμα για την εργασία με την Python (ή οποιαδήποτε γλώσσα προγραμματισμού) είναι να μάθετε πώς να την εγκαταστήσετε σωστά. Γιατί είναι αυτό τόσο δύσκολο; Επειδή η εγκατάσταση της Python διαφέρει δραματικά ανά λειτουργικό σύστημα και έκδοση λειτουργικού συστήματος. Παρακάτω βλέπετε πέντε διαφορετικούς τρόπους με τους οποίους μπορείτε να ξεκινήσετε προγραμματισμό Python από τον ευκολότερο στον πιο δύσκολο.</p>
+<ol class="arabic simple">
+<li><p>Χρήση των εφαρμογών Trinket που είναι ενσωματωμένες σε όλο αυτό το εγχειρίδιο.</p></li>
+<li><p>Χρήση του Google Colab για κάθε ξεχωριστή ενότητα του εγχειριδίου</p></li>
+<li><p>Χρήση της δωρεάν ενσωματωμένης δυνατότητας Binder αυτού του εγχειριδίου</p></li>
+<li><p>Χρήση ενός δωρεάν σημειωματάριου Jupyter Notebook στο διαδίκτυο</p></li>
+<li><p>Εγκατάσταση της Python τοπικά μέσω του Anaconda Navigator και χρήση του Jupyter-Lab</p></li>
+</ol>
+<p>Εάν είστε εντελώς νέοι στον προγραμματισμό, συνιστώ να αγνοήσετε τις επιλογές 2-4 και απλώς να χρησιμοποιήσετε την επιλογή 1 κατά το πρώτο μέρος αυτού του εγχειριδίου. Στην εμπειρία μου, είναι σημαντικό στις αρχές του προγραμματιστικού ταξιδιού σας να έχετε όσο το δυνατόν λιγότερα εμπόδια. Εάν ενδιαφέρεστε να μπείτε στην Python όσο το δυνατόν γρήγορα, τότε χρησιμοποιήστε τα ελεύθερα διαθέσιμα γραφικά στοιχεία Trinket στην ηλεκτρονική έκδοση αυτού του εγχειριδίου και επιστρέψτε στην εγκατάσταση της Python αργότερα.</p>
+<section id="trinket">
+<h2><span class="section-number">1.2.1. </span>Trinket<a class="headerlink" href="#trinket" title="Link to this heading">#</a></h2>
+<p>Σε όλο αυτό το εγχειρίδιο, θα δείτε εφαρμογές <a class="reference external" href="https://trinket.io/">Trinket</a> ενσωματωμένες σε κάθε σελίδα. Το Trinket σας επιτρέπει να εξασκήσετε τις δεξιότητες κωδικοποίησής σας χωρίς να εγκαταστήσετε ποτέ την Python. Εάν είστε νέοι στον προγραμματισμό και θέλετε να ξεκινήσετε αμέσως χωρίς να εγκαταστήσετε την Python, συνιστώ να εργαστείτε με το Trinket μέσα στην ψηφιακή έκδοση αυτού του εγχειριδίου.</p>
+<p>Αυτά θα σας επιτρέψουν να εξασκηθείτε στο μάθημα ακριβώς μέσα στο ψηφιακό εγχειρίδιο. Οι εφαρμογές Trinket μοιάζουν ως εξής:</p>
+<div class="cell tag_hide-tag docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://trinket.io/embed/python3/3fe4c8f3f4&#39;</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="700"
+            height="500"
+            src="https://trinket.io/embed/python3/3fe4c8f3f4"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>Θα μπορείτε να γράψετε τον κώδικά σας μέσα σε αυτήν την εφαρμογή Trinket και στη συνέχεια να κάνετε κλικ στο κουμπί αναπαραγωγής στο επάνω μέρος. Αυτό θα εκτελέσει τον κώδικά σας και θα συμπληρώσει τα αποτελέσματα στη δεξιά έξοδο.</p>
+</section>
+<section id="google-colab">
+<h2><span class="section-number">1.2.2. </span>Χρήση του Google Colab<a class="headerlink" href="#google-colab" title="Link to this heading">#</a></h2>
+<p>Κατά το πρώτο μέρος του εγχειριδίου, σχεδόν όλος ο κώδικας μπορεί να εκτελεστεί με το Trinket. Ακόμη και η ενότητα για το Pandas μπορεί να γίνει μέσα στο Trinket. Ωστόσο, οι μεταγενέστερες ενότητες θα γίνουν ολοένα δυσκολότερες καθώς απαιτούν βιβλιοθήκες που δεν υποστηρίζονται από το Trinket. Σε αυτό το σημείο, θα θέλετε να εξετάσετε άλλη επιλογή. Πάλι, για να καθυστερήσετε την εγκατάσταση της Python στο μηχάνημά σας, μπορούμε να χρησιμοποιήσουμε άλλες λύσεις βασισμένες στο νέφος.</p>
+<p>Υπάρχουν δύο επιλογές για την εκτέλεση του κώδικα αυτού του εγχειριδίου στο νέφος έξω από το εγχειρίδιο: Google Colab και Binder (αναφέρεται παρακάτω). Στην επάνω δεξιά γωνία κάθε σελίδας υπάρχει ένας πύραυλος. Εάν τοποθετήσετε το ποντίκι σας πάνω από αυτόν τον πύραυλο, θα έχετε δύο επιλογές για να επιλέξετε από, Binder ή Colab. Κάντε κλικ <code class="docutils literal notranslate"><span class="pre">Colab</span></code>.</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/rocket_ship.png" src="../_images/rocket_ship.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Εικόνα Rocket Ship στη γωνία Επάνω δεξιά του σημειωματάριου JupyterBook στο διαδίκτυο.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Μόλις κάνετε κλικ στο κουμπί <code class="docutils literal notranslate"><span class="pre">Colab</span></code> θα μεταφερθείτε στο Google Colab και θα δείτε ένα Notebook μέσα στο σύστημα Google Colab που θα πρέπει να μοιάζει ως εξής:</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/google_colab.png"><img alt="../_images/google_colab.png" src="../_images/google_colab.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Επίδειξη του Google Colab που άνοιξε</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Όταν είστε εδώ, μπορείτε να εκτελέσετε το notebook.</p>
+<p>Το Colab και το Binder έχουν τα πλεονεκτήματά τους. Το Google Colab θα είναι πολύ πιο γρήγορο, αλλά θα απαιτήσει να εγκαταστήσετε τις απαιτούμενες βιβλιοθήκες για κάθε σελίδα. Για το μεγαλύτερο μέρος του πρώτου μέρους του εγχειριδίου, αυτό δεν θα είναι απαραίτητο καθώς δεν θα δουλεύουμε με βιβλιοθήκες. Θα μάθετε πώς να εγκαθιστάνετε βιβλιοθήκες τοπικά και σε ένα Jupyter Notebook (όπως αυτά που χρησιμοποιούνται στο Google Colab) αργότερα σε αυτό το μέρος του εγχειριδίου. Μόλις εγκατασταθούν οι βιβλιοθήκες, ολόκληρο το notebook μπορεί να εκτελεστεί ως εάν το εκτελούσατε τοπικά. Ένα μειονέκτημα του Google Colab είναι η αδυναμία του να αξιοποιήσει τα δεδομένα που βρίσκονται σε αυτό το εγχειρίδιο. Αυτό σημαίνει ότι σε ορισμένες περιπτώσεις, θα πρέπει να ανεβάσετε ручноύ τα δεδομένα στο Google Colab για να εκτελεστούν ορισμένα notebooks όπως αναμένεται.</p>
+<p>Ένα άλλο όφελος του Google Colab είναι ότι είναι συνδεδεμένο με τον λογαριασμό σας στο Google. Αυτό σημαίνει ότι οποιαδήποτε αλλαγή που κάνετε στο notebook μπορεί να αποθηκευτεί στο Google Drive σας και να χρησιμοποιηθεί αργότερα. Κάθε φορά που ανοίγετε το notebook, ωστόσο, δημιουργείται ένα μοναδικό παράδειγμα Python, γεγονός που σημαίνει ότι θα πρέπει να εγκαταστήσετε ξανά τις βιβλιοθήκες σας. Ευτυχώς, αυτή η διαδικασία είναι αρκετά γρήγορη.</p>
+</section>
+<section id="binder-jupyterbook">
+<h2><span class="section-number">1.2.3. </span>Χρήση του Binder από αυτό το JupyterBook<a class="headerlink" href="#binder-jupyterbook" title="Link to this heading">#</a></h2>
+<p>Μια άλλη λύση βασισμένη στο νέφος είναι με το Binder. Σε αντίθεση με το Google Colab, το Binder θα φορτώσει ένα περιβάλλον για ολόκληρο το εγχειρίδιο και θα εγκαταστήσει όλες τις βιβλιοθήκες χρησιμοποιώντας το αρχείο <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> που βρίσκεται στο αποθετήριο GitHub αυτού του εγχειριδίου. Αυτό σημαίνει ότι το Binder θα χρειαστεί σημαντικά περισσότερο χρόνο για να φορτώσει, αλλά θα περιέχει ολόκληρο το εγχειρίδιο. Θα αποθηκεύσει επίσης το παράδειγμα για μια χρονική περίοδο ώστε εάν επιστρέψετε στον ίδιο σύνδεσμο σε σύντομο χρονικό διάστημα, υπάρχει πιθανότητα να μην χρειαστεί να εγκαταστήσει ξανά όλες τις βιβλιοθήκες. Στην εμπειρία μου, το Binder μπορεί να αντιμετωπίσει ορισμένα προβλήματα που μπορεί να είναι δύσκολο να διαγνωστούν, ιδίως εάν είστε νέοι στον προγραμματισμό. Για αυτόν τον λόγο, θα συνιστούσα το Google Colab έναντι του Binder σε νέους προγραμματιστές.</p>
+<p>Όπως και με το Google Colab, για να ξεκινήσετε, τοποθετήστε το ποντίκι σας πάνω από το εικονίδιο του πυράλου στο επάνω-αριστερό τμήμα της σελίδας.</p>
+<figure class="align-default" id="id6">
+<img alt="../_images/binder_rocket.JPG" src="../_images/binder_rocket.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Επίδειξη του Rocket Ship στη γωνία Επάνω δεξιά</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ένα κουμπί που λέει binder πρέπει να εμφανιστεί που λέει “Binder”. Κάντε κλικ σε αυτό.</p>
+<figure class="align-default" id="id7">
+<img alt="../_images/binder_button.JPG" src="../_images/binder_button.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Επιλογή του κουμπιού Binder.</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Σε αυτό το στάδιο, η οθόνη σας θα πρέπει να μοιάζει ως εξής:</p>
+<img alt="../_images/binder_build.JPG" src="../_images/binder_build.JPG" />
+<p>Αν το κάνει, τότε κάθισε και χαλαρώνε. Μπορεί να χρειαστεί λίγα λεπτά καθώς το binder δημιουργεί το περιβάλλον. Μόλις ολοκληρωθεί το Binder, κάντε κλικ στο File στην επάνω αριστερή γωνία της οθόνης και στη συνέχεια επιλέξτε New Notebook.</p>
+<figure class="align-default" id="id8">
+<img alt="../_images/binder_new_notebook.JPG" src="../_images/binder_new_notebook.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Δημιουργία ενός νέου Notebook στο Binder.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Μετά από αυτό, επιλέξτε Python 3 (ipykernal). Αυτό θα ανοίξει ένα φρέσκο, νέο notebook.</p>
+<figure class="align-default" id="id9">
+<img alt="../_images/binder_new_notebook_click.JPG" src="../_images/binder_new_notebook_click.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Επιλογή του κερνέλ Python 3 για το νέο Notebook.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Τώρα θα πρέπει να έχετε ένα νέο notebook που μοιάζει ως εξής:</p>
+<figure class="align-default" id="id10">
+<img alt="../_images/binder_new_notebook_page.JPG" src="../_images/binder_new_notebook_page.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Παράδειγμα μιας νέας σελίδας Notebook.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Και τώρα, μπορείτε να ακολουθήσετε πλήρως αυτό το εγχειρίδιο.</p>
+</section>
+<section id="jupyter-notebooks-online">
+<h2><span class="section-number">1.2.4. </span>Χρήση Jupyter Notebooks Online<a class="headerlink" href="#jupyter-notebooks-online" title="Link to this heading">#</a></h2>
+<p>Εάν θέλετε να είστε λίγο πιο ανεξάρτητοι και να μάθετε πώς να κωδικοποιείτε στην Python στο διαδίκτυο χωρίς το Binder και αυτό το εγχειρίδιο, μπορείτε! Δεν χρειάζεται να κατεβάσετε και να εγκαταστήσετε την Python στον τοπικό σας υπολογιστή. Αντίθετα, μπορείτε να χρησιμοποιήσετε δωρεάν σε σύνδεσμο διαδικτύου compilers που σας επιτρέπουν να ακολουθήσετε σχεδόν ολόκληρο αυτό το εγχειρίδιο χωρίς πρόβλημα.</p>
+<p>Εάν αυτή είναι η άποψή σας αυτήν τη στιγμή, τότε κάντε κλικ στον σύνδεσμο: https://jupyter.org/try</p>
+<p>Μόλις στη σελίδα κάντε κλικ στην εικόνα που λέει Jupyter Notebook</p>
+<figure class="align-default" id="id11">
+<img alt="../_images/jupyter_org.JPG" src="../_images/jupyter_org.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">Δημιουργία ενός Jupyter Notebook Online.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Μετά από αυτό, θα δείτε μια οθόνη που μοιάζει ως εξής:</p>
+<figure class="align-default" id="id12">
+<img alt="../_images/jupyter_org_binder.JPG" src="../_images/jupyter_org_binder.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.9 </span><span class="caption-text">Binder που δημιουργεί ένα νέο περιβάλλον για το Notebook.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Μετά από λίγα λεπτά, το περιβάλλον θα φορτωθεί και θα πρέπει να δείτε ένα notebook. Κάντε κλικ στο File στην επάνω αριστερή γωνία, New Notebook, και επιλέξτε Python 3.</p>
+<figure class="align-default" id="id13">
+<img alt="../_images/jupyter_org_new.JPG" src="../_images/jupyter_org_new.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.10 </span><span class="caption-text">Δημιουργία ενός νέου Notebook.</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Μόλις φορτωθεί, μπορείτε να ακολουθήσετε αυτό το εγχειρίδιο σε αυτό το νέο notebook.</p>
+<figure class="align-default" id="id14">
+<img alt="../_images/jupyter_org_new_page.JPG" src="../_images/jupyter_org_new_page.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.11 </span><span class="caption-text">Παράδειγμα ενός νέου Notebook.</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id1">
+<h2><span class="section-number">1.2.5. </span>Εγκατάσταση της Python τοπικά<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Εάν επιθυμείτε να εγκαταστήσετε την Python τοπικά και είναι η πρώτη φορά, υπάρχουν πολλά προβλήματα που μπορούν να προκύψουν. Για αυτόν τον λόγο, τώρα συνιστώ σε όλους τους μαθητές να εγκαταστήσουν μέσω του Anaconda Navigator. Προσθέτει επιπλέον βήματα στη διαδικασία εγκατάστασης, αλλά εξαλείφει το δυνατό για λάθη που θα προκύψουν.</p>
+<p>Το Anaconda Navigator είναι μια φιλική προς τον χρήστη διεπαφή που χειρίζεται τη διαδικασία εγκατάστασης για σας. Επιτρέπει επίσης να δημιουργήσετε περιβάλλοντα, τα οποία είναι μικρές περιοχές στον υπολογιστή σας που έχουν μια μοναδική έκδοση της Python και βιβλιοθηκών που είναι εγκατεστημένες. Θα μάθουμε περισσότερα σχετικά με αυτό στο Μέρος 06 όταν εξερευνούμε τις βιβλιοθήκες.</p>
+<p>Σε αυτό το κεφάλαιο, θα σας καθοδηγήσω στα βήματα εγκατάστασης του Anaconda Navigator στο μηχάνημά σας, ανεξάρτητα από το λειτουργικό σύστημα.</p>
+<p>Όταν γράφουμε κώδικα στην Python, το κάνουμε με λίγους διαφορετικούς τρόπους, ανάλογα με τη χρήση αυτού του κώδικα. Επειδή αυτό είναι ένα εγχειρίδιο και ο κώδικας που γράφω είναι για σκοπούς παρουσίασης, χρησιμοποιώ ένα Jupyter Notebook. Άλλες φορές, ενδέχεται να γράψετε ένα πρόγραμμα σε ένα IDE, ή ένα Integrated Development Environment. Ορισμένα από αυτά περιλαμβάνουν PyCharm, Atom, κ.λπ. Σε άλλες περιπτώσεις, θα χρησιμοποιήσετε την Python στο τερματικό για να εκτελέσετε γρήγορες εργασίες σε δεδομένα σε έναν κατάλογο.</p>
+<p>Το Anaconda Navigator αφαιρεί την ανάγκη για σας να μάθετε πώς να το κάνετε όλο αυτό επειδή σας επιτρέπει να εγκαταστήσετε εύκολα το Jupyter-Lab το οποίο λειτουργεί σαν IDE αλλά είναι λίγο πιο συγχωρητικό. Επιπλέον, μπορείτε να καλέσετε περιόδους τερματικού. Ξέρω ότι αυτοί οι όροι δεν έχουν νόημα αυτήν τη στιγμή, αλλά καθώς η κατανόησή σας του προγραμματισμού επεκταθεί, αυτή η παράγραφος θα έχει περισσότερο νόημα. Προς το παρόν, απλώς κατανοήστε ότι το Anaconda Navigator και το Jupyter-Lab (και τα δύο των οποίων εγκαθιστούμε σε αυτό το κεφάλαιο), κάνουν την έναρξη της μάθησης προγραμματισμού πολύ, πολύ απλούστερη.</p>
+<section id="anaconda-navigator">
+<h3><span class="section-number">1.2.5.1. </span>Λήψη του Anaconda Navigator<a class="headerlink" href="#anaconda-navigator" title="Link to this heading">#</a></h3>
+<p>Για να κατεβάσετε το Anaconda Navigator, πηγαίνετε στον σύνδεσμο αυτό: https://www.anaconda.com/. Στη συνέχεια, τοποθετήστε το ποντίκι σας πάνω από τα Προϊόντα και επιλέξτε Ατομική Έκδοση, όπως φαίνεται στην παρακάτω εικόνα.</p>
+<figure class="align-default" id="id15">
+<img alt="../_images/anaconda_navigator1.JPG" src="../_images/anaconda_navigator1.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.12 </span><span class="caption-text">Αρχική σελίδα του Anaconda.</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Τώρα, κάντε κλικ στο κουμπί Download όπως φαίνεται στην παρακάτω εικόνα και περιηγηθείτε στη διαδικασία εγκατάστασης στον υπολογιστή σας. Μόλις ολοκληρωθεί, θα έχετε το Anaconda Navigator εγκατεστημένο.</p>
+<figure class="align-default" id="id16">
+<img alt="../_images/anaconda_navigator2.JPG" src="../_images/anaconda_navigator2.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.13 </span><span class="caption-text">Λήψη Ατομικής Έκδοσης.</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id2">
+<h3><span class="section-number">1.2.5.2. </span>Χρήση του Anaconda Navigator<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Τώρα που έχει εγκατασταθεί το Anaconda Navigator, μπορείτε να το χρησιμοποιήσετε ανοίγοντάς το στον υπολογιστή σας. Όταν πρώτη φορά δείτε το Anaconda Navigator, θα δείτε αρκετές επιλογές στα αριστερά. Στα περιβάλλοντα, θα δείτε μόνο ένα περιβάλλον: base. Μην ανησυχείτε για περιβάλλοντα σε αυτό το πρώιμο στάδιο της καριέρας σας στην Python. Προς το παρόν, θα κάνουμε απλώς κλικ στο κουμπί Αρχική σελίδα στα αριστερά.</p>
+<figure class="align-default" id="id17">
+<img alt="../_images/anaconda_navigator3.JPG" src="../_images/anaconda_navigator3.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.14 </span><span class="caption-text">Η κύρια διεπαφή χρήστη του Anaconda Navigator.</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="jupyter-lab">
+<h3><span class="section-number">1.2.5.3. </span>Εγκατάσταση του Jupyter-Lab<a class="headerlink" href="#jupyter-lab" title="Link to this heading">#</a></h3>
+<p>Για να ξεκινήσετε να χρησιμοποιείτε την Python, υπάρχουν λίγες διαφορετικές επιλογές διαθέσιμες για σας. Θα μπορούσατε να χρησιμοποιήσετε ένα τερματικό και να ακολουθήσετε το εγχειρίδιο, αλλά αυτό μπορεί να είναι αρκετά δύσκολο εάν μόλις ξεκινάτε. Δεδομένου ότι αυτό το εγχειρίδιο σχεδιάστηκε στο JupyterLab, νομίζω ότι έχει περισσότερο νόημα να εγκαταστήσετε αυτό το λογισμικό. Προχωρήστε και κάντε κλικ Εγκατάσταση κάτω από το JupyterLab. Μόλις εγκατασταθεί, θα μπορείτε να το Εκτελέσετε και να ακολουθήσετε το εγχειρίδιο.</p>
+<figure class="align-default" id="id18">
+<img alt="../_images/anaconda_navigator4.JPG" src="../_images/anaconda_navigator4.JPG" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.15 </span><span class="caption-text">Πώς να εγκαταστήσετε το Jupyter Lab.</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.2.6. </span>Συμπέρασμα<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Εάν σε κάποιο σημείο της διαδικασίας εγκατάστασης νιώσετε απογοήτευση, μην αποθαρρυνθείτε. Δεν είστε μόνοι και δεν είναι μια απλή ή εύκολη διαδικασία. Αυτοί που προγραμματίζουν χρόνια μπορούν να κάνουν αυτά τα βήματα να φαίνονται απλά, αλλά η αντιμετώπιση προβλημάτων μόνοι σας είναι προκλητική. Είναι σημαντικό να θυμάστε ότι ο προγραμματισμός γενικά είναι προκλητικός. Προσπαθήστε να κοιτάξετε τις προκλήσεις που προκύπτουν ως διασκεδαστικά προβλήματα που πρέπει να επιλυθούν. Προσπαθήστε να δείτε τα λάθη σας μέσα από ένα φακό Bob Ross και να τα δείτε ως <code class="docutils literal notranslate"><span class="pre">ευτυχισμένα</span> <span class="pre">ατυχήματα</span></code>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_01-02_introduction_to_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.1. </span>Εισαγωγή στην Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_01-04_coding_basics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.3. </span>Βασικά Στοιχεία Προγραμματισμού</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trinket">1.2.1. Trinket</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">1.2.2. Χρήση του Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binder-jupyterbook">1.2.3. Χρήση του Binder από αυτό το JupyterBook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-online">1.2.4. Χρήση Jupyter Notebooks Online</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.5. Εγκατάσταση της Python τοπικά</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-navigator">1.2.5.1. Λήψη του Anaconda Navigator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.5.2. Χρήση του Anaconda Navigator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.2.5.3. Εγκατάσταση του Jupyter-Lab</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.6. Συμπέρασμα</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

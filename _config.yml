@@ -6,6 +6,19 @@ execute:
   execute_notebooks: 'off'
 parse:
   myst_extended_syntax: true
+exclude_patterns:
+  - venv*
+  - .git
+  - .github
+  - .ipynb_checkpoints
+  - _build
+  - .DS_Store
+  - '**.ipynb_checkpoints'
+  - markdown
+  - streamlit_application
+  - CLAUDE.md
+  - TRANSLATION_PLAN.md
+  - README.md
 # Information about where the book exists on the web
 repository:
   url: https://github.com/wjbmattingly/python_for_dh # Online location of your book

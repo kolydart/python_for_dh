@@ -1,0 +1,2206 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.2. Organizing the DataFrame &#8212; Introduction to Python for Humanists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_pandas/02_02_03_organizing_data';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. Cleaning the DataFrame" href="02_02_04_cleaning_data.html" />
+    <link rel="prev" title="2.1. Finding Data in DataFrame" href="02_02_02_finding_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/chapman-logo.jpg" class="logo__image only-light" alt="Introduction to Python for Humanists - Home"/>
+    <script>document.write(`<img src="../_static/chapman-logo.jpg" class="logo__image only-dark" alt="Introduction to Python for Humanists - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <p align="center">INTRODUCTION TO PYTHON FOR HUMANISTS</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PREFACE</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_preface/00_01_preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART ONE: The Basics of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_01-01_intro.html">1. Εισαγωγή στην Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_01-02_introduction_to_python.html">1.1. Εισαγωγή στην Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_01-03_installing_python.html">1.2. Εγκατάσταση της Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_01-04_coding_basics.html">1.3. Βασικά Στοιχεία Προγραμματισμού</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_02-01_intro.html">2. Δεδομένα και Δομές Δεδομένων</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_02-02_data.html">2.1. Εισαγωγή στα Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_02-03_data_structures.html">2.2. Εισαγωγή στις Δομές Δεδομένων</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_03-01_intro.html">3. Βρόχοι και Λογική</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_03-02_loops.html">3.1. Εισαγωγή στους Βρόχους</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_03-03_conditionals.html">3.2. Δηλώσεις Συνθήκης</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_04-01_intro.html">4. Επίσημος Προγραμματισμός: Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_04-02_functions.html">4.1. Συναρτήσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_04-03_classes.html">4.2. Κλάσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_04-04_libraries.html">4.3. Βιβλιοθήκες στην Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_05-01_intro.html">5. Εργασία με Εξωτερικά Δεδομένα</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_05-02_texts.html">5.1. Εργασία με Κειμενικά Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_05-03_json.html">5.2. Εργασία με Δεδομένα JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_05-04_multiple_files.html">5.3. Εργασία με Πολλαπλά Αρχεία</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_06-01_intro.html">6. Εργασία με Δεδομένα στο Ιστό</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_06-02_html.html">6.1. Εισαγωγή στην HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_06-03_scraping_pages.html">6.2. Scraping Ιστοσελίδων με τις Requests και BeautifulSoup</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART TWO: Data Analysis with Pandas (Work in Progress)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_01_01_intro.html">1. Introduction to Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_01_02_introduction_to_pandas.html">1.1. Introduction to Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_01_03_the_basics.html">1.2. The Basics of Pandas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="02_02_01_intro.html">2. Working with Data in Pandas</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="02_02_02_finding_data.html">2.1. Finding Data in DataFrame</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Organizing the DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_02_04_cleaning_data.html">2.3. Cleaning the DataFrame</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_03_01_intro.html">3. Searching for Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_03_02_advanced_strings.html">3.1. Advanced Searching on Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_03_03_advanced_querying.html">3.2. Filter and Querying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_03_04_advanced_grouping.html">3.3. Grouping with Groupby()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02_04_01_intro.html">4. Advanced Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_04_02_pandas_and_plots.html">4.1. Plotting Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_04_03_graphing_networks_with_pandas.html">4.2. Graphing Network Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_04_04_time_series_data.html">4.3. Time Series Data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART THREE: Natural Language Processing with spaCy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_01_01_intro.html">1. Introduction to spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_02_install_and_containers.html">1.1. The Basics of spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_03_linguistic_annotations.html">1.2. Getting Started with spaCy and its Linguistic Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_04_pipelines.html">1.3. spaCy’s Pipelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_02_01_intro.html">2. Rules-Based spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_02_entityruler.html">2.1. The EntityRuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_03_matcher.html">2.2. The Matcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_04_phrase_matcher.html">2.3. The PhraseMatcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_06_simple_regex.html">2.4. Using RegEx with spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_07_complex_regex.html">2.5. Working with Multi-Word Token Entities and RegEx in spaCy 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_03_01_intro.html">3. Solving a Domain-Specific Problem: A Case Study with Holocaust NER</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_02_cultivating_concentration_camp_dataset.html">3.1. Cultivating Good Datasets for Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_03_challenges.html">3.2. The Challenges of Holocaust NER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_04_building_holocaust_pipeline_rules_based.html">3.3. Creating Rules-Based Pipeline for Holocaust Documents</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FOUR: OTHER APPLICATIONS OF PYTHON </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_topic_modeling/04_01_01_intro.html">1. Topic Modeling in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_02_topic_modeling_concepts.html">1.1. What is Topic Modeling?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_03_clusters.html">1.2. Topics and Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_04_bigrams.html">1.3. Bigrams and Trigrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_02_lda_concept.html">1.4. LDA Topic Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_06_lda.html">1.5. Creating LDA in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_03_embedding_clustering.html">1.6. Transformer Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_04_top2vec.html">1.7. Top2Vec in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_booknlp/01_01_intro.html">2. Text Analysis with BookNLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/01_intro.html">2.1. Introduction to BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/02_starting.html">2.2. Getting Started with BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/03_files.html">2.3. The Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/04_character_analysis.html">2.4. Character Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/05_events.html">2.5. Events Analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_sna/06_01_01_intro.html">3. Social Network Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_02_basics.html">3.1. The Basic Concepts of Social Network Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_03_networkx.html">3.2. Introduction to NetworkX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_04_pyvis_basics.html">3.3. Producing Dynamic Graphs with PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_05_networkx_pyvis.html">3.4. NetworkX and PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_06_node_color.html">3.5. Adding Color to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_07_applied.html">3.6. SNA on Humanities Data: Structuring the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_08_applied2.html">3.7. SNA on Humanities Data: Creating the Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FIVE: DESIGNING AN APPLICATION WITH STREAMLIT</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_01_01_intro.html">1. Introduction to Streamlit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_02_streamlit.html">1.1. Creating Our First App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_03_displaying_data.html">1.2. Displaying Data in Streamlit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_04_input_widgets.html">1.3. Streamlit Input Widgets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_02_01_intro.html">2. Advanced Streamlit Features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_02_charts.html">2.1. Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_03_layout_design.html">2.2. Layout Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_04_cache.html">2.3. Streamlit Cache and Session States</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_05_custom_html.html">2.5. Custom HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_06_multiple_pages.html">2.6. Multi-Page Applications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_03_01_intro.html">3. Building a Database Query Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_02_database_query_app.html">3.1. Building a Database Query Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_03_cloud.html">3.2. Deploying an App in the Cloud with Streamlit Share</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/wjbmattingly/python_for_dh/blob/main/02_pandas/02_02_03_organizing_data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/edit/main/02_pandas/02_02_03_organizing_data.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/issues/new?title=Issue%20on%20page%20%2F02_pandas/02_02_03_organizing_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02_pandas/02_02_03_organizing_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Organizing the DataFrame</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-sort-data-by-single-column">2.2.1. How to Sort Data By Single Column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-reverse-sort-data-by-single-column">2.2.2. How to Reverse Sort Data by Single Column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-sort-data-by-multiple-columns">2.2.3. How to Sort Data by Multiple Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-sort-data-by-multiple-columns-with-different-values-organized-differently">2.2.4. How to Sort Data by Multiple Columns with Different Values Organized Differently</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="organizing-the-dataframe">
+<h1><span class="section-number">2.2. </span>Organizing the DataFrame<a class="headerlink" href="#organizing-the-dataframe" title="Link to this heading">#</a></h1>
+<section id="how-to-sort-data-by-single-column">
+<h2><span class="section-number">2.2.1. </span>How to Sort Data By Single Column<a class="headerlink" href="#how-to-sort-data-by-single-column" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/titanic.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve import pandas and created our DataFrame, let’s see what it looks like again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>887</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Montvila, Rev. Juozas</td>
+      <td>male</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>211536</td>
+      <td>13.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>888</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>female</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112053</td>
+      <td>30.0000</td>
+      <td>B42</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>889</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>W./C. 6607</td>
+      <td>23.4500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>890</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Behr, Mr. Karl Howell</td>
+      <td>male</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>111369</td>
+      <td>30.0000</td>
+      <td>C148</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>891</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Dooley, Mr. Patrick</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>370376</td>
+      <td>7.7500</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 12 columns</p>
+</div></div></div>
+</div>
+<p>In this scenario, I am interested in sorting the data (rather like Excel). Rather than using the sort feature in Excel, we can use the <code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code> method in Python. This will take one argument, specifically the column that you want to organize by. By default, this will be ascending. Let’s do this by class. In other words, sort the DataFrame so that those who were in first class appear first and those in third class appear last. We will do this by passing the argument “Pclass”, the column name corresponding to Passenger Class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Pclass&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>445</th>
+      <td>446</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Dodge, Master. Washington</td>
+      <td>male</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>33638</td>
+      <td>81.8583</td>
+      <td>A34</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>310</th>
+      <td>311</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Hays, Miss. Margaret Bechstein</td>
+      <td>female</td>
+      <td>24.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11767</td>
+      <td>83.1583</td>
+      <td>C54</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>309</th>
+      <td>310</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Francatelli, Miss. Laura Mabel</td>
+      <td>female</td>
+      <td>30.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PC 17485</td>
+      <td>56.9292</td>
+      <td>E36</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>307</th>
+      <td>308</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Penasco y Castellana, Mrs. Victor de Satode (M...</td>
+      <td>female</td>
+      <td>17.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17758</td>
+      <td>108.9000</td>
+      <td>C65</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>307</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Fleming, Miss. Margaret</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17421</td>
+      <td>110.8833</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>379</th>
+      <td>380</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Gustafsson, Mr. Karl Gideon</td>
+      <td>male</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>347069</td>
+      <td>7.7750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>381</th>
+      <td>382</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Nakid, Miss. Maria ("Mary")</td>
+      <td>female</td>
+      <td>1.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2653</td>
+      <td>15.7417</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>382</th>
+      <td>383</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Tikkanen, Mr. Juho</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O 2. 3101293</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>371</th>
+      <td>372</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Wiklund, Mr. Jakob Alfred</td>
+      <td>male</td>
+      <td>18.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3101267</td>
+      <td>6.4958</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>891</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Dooley, Mr. Patrick</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>370376</td>
+      <td>7.7500</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 12 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="how-to-reverse-sort-data-by-single-column">
+<h2><span class="section-number">2.2.2. </span>How to Reverse Sort Data by Single Column<a class="headerlink" href="#how-to-reverse-sort-data-by-single-column" title="Link to this heading">#</a></h2>
+<p>As we can see, our data is now appearing as expected. We can pass additional keyword arguments to sort the data in the opposite direction, or descending by setting <code class="docutils literal notranslate"><span class="pre">ascending</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>. See the example below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>511</th>
+      <td>512</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Webber, Mr. James</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SOTON/OQ 3101316</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>500</th>
+      <td>501</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Calic, Mr. Petar</td>
+      <td>male</td>
+      <td>17.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>315086</td>
+      <td>8.6625</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>501</th>
+      <td>502</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Canavan, Miss. Mary</td>
+      <td>female</td>
+      <td>21.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>364846</td>
+      <td>7.7500</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>502</th>
+      <td>503</td>
+      <td>0</td>
+      <td>3</td>
+      <td>O'Sullivan, Miss. Bridget Mary</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330909</td>
+      <td>7.6292</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>103</td>
+      <td>0</td>
+      <td>1</td>
+      <td>White, Mr. Richard Frasar</td>
+      <td>male</td>
+      <td>21.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>35281</td>
+      <td>77.2875</td>
+      <td>D26</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>710</th>
+      <td>711</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Mayne, Mlle. Berthe Antonine ("Mrs de Villiers")</td>
+      <td>female</td>
+      <td>24.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PC 17482</td>
+      <td>49.5042</td>
+      <td>C90</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>712</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Klaber, Mr. Herman</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113028</td>
+      <td>26.5500</td>
+      <td>C124</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>713</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Taylor, Mr. Elmer Zebley</td>
+      <td>male</td>
+      <td>48.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>19996</td>
+      <td>52.0000</td>
+      <td>C126</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>445</th>
+      <td>446</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Dodge, Master. Washington</td>
+      <td>male</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>33638</td>
+      <td>81.8583</td>
+      <td>A34</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 12 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="how-to-sort-data-by-multiple-columns">
+<h2><span class="section-number">2.2.3. </span>How to Sort Data by Multiple Columns<a class="headerlink" href="#how-to-sort-data-by-multiple-columns" title="Link to this heading">#</a></h2>
+<p>Again, we can see the power of Pandas over Excel by the simplicity of altering our command to include multiple columns. Let’s say that we want to sort all the data by Pclass, then we want that data organized again by sex, so that all male and female passengers appear in order. We can do this by passing the argument of what we want organized as a list. Note the order of the list as well. The columns that appear earlier in the list correspond to those that receive primacy in the ascending. In other words, we organize by passenger class firsit, then sex. In this case, the method head, is simply showing the top 100 rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Bonnell, Miss. Elizabeth</td>
+      <td>female</td>
+      <td>58.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113783</td>
+      <td>26.5500</td>
+      <td>C103</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Spencer, Mrs. William Augustus (Marie Eugenie)</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17569</td>
+      <td>146.5208</td>
+      <td>B78</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>53</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Harper, Mrs. Henry Sleeper (Myna Haxtun)</td>
+      <td>female</td>
+      <td>49.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17572</td>
+      <td>76.7292</td>
+      <td>D33</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Sloper, Mr. William Thompson</td>
+      <td>male</td>
+      <td>28.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113788</td>
+      <td>35.5000</td>
+      <td>A6</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Fortune, Mr. Charles Alexander</td>
+      <td>male</td>
+      <td>19.0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>19950</td>
+      <td>263.0000</td>
+      <td>C23 C25 C27</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Uruchurtu, Don. Manuel E</td>
+      <td>male</td>
+      <td>40.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PC 17601</td>
+      <td>27.7208</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>35</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Meyer, Mr. Edgar Joseph</td>
+      <td>male</td>
+      <td>28.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17604</td>
+      <td>82.1708</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>36</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Holverson, Mr. Alexander Oskar</td>
+      <td>male</td>
+      <td>42.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113789</td>
+      <td>52.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 12 columns</p>
+</div></div></div>
+</div>
+<p>As with before, we can control how the data is sorted, either ascending or descending. If we set ascending to False, we organize all items in the list by this method. We can do this with the sample code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Moran, Mr. James</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330877</td>
+      <td>8.4583</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Palsson, Master. Gosta Leonard</td>
+      <td>male</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Saundercock, Mr. William Henry</td>
+      <td>male</td>
+      <td>20.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>A/5. 2151</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>856</th>
+      <td>857</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Wick, Mrs. George Dennick (Mary Hitchcock)</td>
+      <td>female</td>
+      <td>45.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>36928</td>
+      <td>164.8667</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>862</th>
+      <td>863</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Swift, Mrs. Frederick Joel (Margaret Welles Ba...</td>
+      <td>female</td>
+      <td>48.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17466</td>
+      <td>25.9292</td>
+      <td>D17</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>871</th>
+      <td>872</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Beckwith, Mrs. Richard Leonard (Sallie Monypeny)</td>
+      <td>female</td>
+      <td>47.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11751</td>
+      <td>52.5542</td>
+      <td>D35</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>879</th>
+      <td>880</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)</td>
+      <td>female</td>
+      <td>56.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>11767</td>
+      <td>83.1583</td>
+      <td>C50</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>888</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>female</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112053</td>
+      <td>30.0000</td>
+      <td>B42</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 12 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="how-to-sort-data-by-multiple-columns-with-different-values-organized-differently">
+<h2><span class="section-number">2.2.4. </span>How to Sort Data by Multiple Columns with Different Values Organized Differently<a class="headerlink" href="#how-to-sort-data-by-multiple-columns-with-different-values-organized-differently" title="Link to this heading">#</a></h2>
+<p>What if we want to organize the data differently. By this I mean, we want for all the data to be organized by passenger class first and for that data to be ascending (1, 2, 3), but we want the sex of the passengers to be organized descending (male, female, rather than female, male). To achieve this, we can pass a list to ascending with 0s and 1s. 0 is False and 1 is True.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>McCarthy, Mr. Timothy J</td>
+      <td>male</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17463</td>
+      <td>51.8625</td>
+      <td>E46</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Sloper, Mr. William Thompson</td>
+      <td>male</td>
+      <td>28.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113788</td>
+      <td>35.5000</td>
+      <td>A6</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Fortune, Mr. Charles Alexander</td>
+      <td>male</td>
+      <td>19.0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>19950</td>
+      <td>263.0000</td>
+      <td>C23 C25 C27</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Uruchurtu, Don. Manuel E</td>
+      <td>male</td>
+      <td>40.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PC 17601</td>
+      <td>27.7208</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>35</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Meyer, Mr. Edgar Joseph</td>
+      <td>male</td>
+      <td>28.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17604</td>
+      <td>82.1708</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>863</th>
+      <td>864</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Sage, Miss. Dorothy Edith "Dolly"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>2</td>
+      <td>CA. 2343</td>
+      <td>69.5500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>875</th>
+      <td>876</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Najib, Miss. Adele Kiamie "Jane"</td>
+      <td>female</td>
+      <td>15.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2667</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>882</th>
+      <td>883</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Dahlberg, Miss. Gerda Ulrika</td>
+      <td>female</td>
+      <td>22.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7552</td>
+      <td>10.5167</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>885</th>
+      <td>886</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Rice, Mrs. William (Margaret Norton)</td>
+      <td>female</td>
+      <td>39.0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>382652</td>
+      <td>29.1250</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>889</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>W./C. 6607</td>
+      <td>23.4500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 12 columns</p>
+</div></div></div>
+</div>
+<p>What is particularly nice about Pandas over Excel is that this operation scales nicely. If we want to add more methods of sorting, we can do that too by simple increasing the indices of our lists. Always make sure that the length of your lists match, however. In other words, do not have 3 attributes to sort by and 2 items in your ascending list. In this case, we want to organize by passenger class, sex, and age with passenger class ascending, sex descending, and age ascending. Let’s see what that would look like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;Pclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Age&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>305</th>
+      <td>306</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Allison, Master. Hudson Trevor</td>
+      <td>male</td>
+      <td>0.92</td>
+      <td>1</td>
+      <td>2</td>
+      <td>113781</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>445</th>
+      <td>446</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Dodge, Master. Washington</td>
+      <td>male</td>
+      <td>4.00</td>
+      <td>0</td>
+      <td>2</td>
+      <td>33638</td>
+      <td>81.8583</td>
+      <td>A34</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>802</th>
+      <td>803</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Carter, Master. William Thornton II</td>
+      <td>male</td>
+      <td>11.00</td>
+      <td>1</td>
+      <td>2</td>
+      <td>113760</td>
+      <td>120.0000</td>
+      <td>B96 B98</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>550</th>
+      <td>551</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Thayer, Mr. John Borland Jr</td>
+      <td>male</td>
+      <td>17.00</td>
+      <td>0</td>
+      <td>2</td>
+      <td>17421</td>
+      <td>110.8833</td>
+      <td>C70</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>505</th>
+      <td>506</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Penasco y Castellana, Mr. Victor de Satode</td>
+      <td>male</td>
+      <td>18.00</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17758</td>
+      <td>108.9000</td>
+      <td>C65</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>697</th>
+      <td>698</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Mullens, Miss. Katherine "Katie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>35852</td>
+      <td>7.7333</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>727</th>
+      <td>728</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Mannion, Miss. Margareth</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>36866</td>
+      <td>7.7375</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>792</th>
+      <td>793</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Sage, Miss. Stella Anna</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>2</td>
+      <td>CA. 2343</td>
+      <td>69.5500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>863</th>
+      <td>864</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Sage, Miss. Dorothy Edith "Dolly"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>2</td>
+      <td>CA. 2343</td>
+      <td>69.5500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>889</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>W./C. 6607</td>
+      <td>23.4500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 12 columns</p>
+</div></div></div>
+</div>
+<p>As we move forward throughout this textbook, we will explore more robust ways to sort and organize our data. For now, you should feel comfortable with how to use <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> to do fairly robust tasks quickly.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./02_pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_02_02_finding_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.1. </span>Finding Data in DataFrame</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_02_04_cleaning_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Cleaning the DataFrame</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-sort-data-by-single-column">2.2.1. How to Sort Data By Single Column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-reverse-sort-data-by-single-column">2.2.2. How to Reverse Sort Data by Single Column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-sort-data-by-multiple-columns">2.2.3. How to Sort Data by Multiple Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-sort-data-by-multiple-columns-with-different-values-organized-differently">2.2.4. How to Sort Data by Multiple Columns with Different Values Organized Differently</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

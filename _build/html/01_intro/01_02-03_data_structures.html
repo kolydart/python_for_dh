@@ -1,0 +1,1901 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.2. Εισαγωγή στις Δομές Δεδομένων &#8212; Introduction to Python for Humanists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_intro/01_02-03_data_structures';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Βρόχοι και Λογική" href="01_03-01_intro.html" />
+    <link rel="prev" title="2.1. Εισαγωγή στα Δεδομένα" href="01_02-02_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/chapman-logo.jpg" class="logo__image only-light" alt="Introduction to Python for Humanists - Home"/>
+    <script>document.write(`<img src="../_static/chapman-logo.jpg" class="logo__image only-dark" alt="Introduction to Python for Humanists - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <p align="center">INTRODUCTION TO PYTHON FOR HUMANISTS</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PREFACE</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_preface/00_01_preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART ONE: The Basics of Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_01-01_intro.html">1. Εισαγωγή στην Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_01-02_introduction_to_python.html">1.1. Εισαγωγή στην Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_01-03_installing_python.html">1.2. Εγκατάσταση της Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_01-04_coding_basics.html">1.3. Βασικά Στοιχεία Προγραμματισμού</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01_02-01_intro.html">2. Δεδομένα και Δομές Δεδομένων</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_02-02_data.html">2.1. Εισαγωγή στα Δεδομένα</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Εισαγωγή στις Δομές Δεδομένων</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_03-01_intro.html">3. Βρόχοι και Λογική</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_03-02_loops.html">3.1. Εισαγωγή στους Βρόχους</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_03-03_conditionals.html">3.2. Δηλώσεις Συνθήκης</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_04-01_intro.html">4. Επίσημος Προγραμματισμός: Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_04-02_functions.html">4.1. Συναρτήσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_04-03_classes.html">4.2. Κλάσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_04-04_libraries.html">4.3. Βιβλιοθήκες στην Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_05-01_intro.html">5. Εργασία με Εξωτερικά Δεδομένα</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_05-02_texts.html">5.1. Εργασία με Κειμενικά Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_05-03_json.html">5.2. Εργασία με Δεδομένα JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_05-04_multiple_files.html">5.3. Εργασία με Πολλαπλά Αρχεία</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_06-01_intro.html">6. Εργασία με Δεδομένα στο Ιστό</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_06-02_html.html">6.1. Εισαγωγή στην HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_06-03_scraping_pages.html">6.2. Scraping Ιστοσελίδων με τις Requests και BeautifulSoup</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART TWO: Data Analysis with Pandas (Work in Progress)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_01_01_intro.html">1. Introduction to Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_02_introduction_to_pandas.html">1.1. Introduction to Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_03_the_basics.html">1.2. The Basics of Pandas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_02_01_intro.html">2. Working with Data in Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_02_finding_data.html">2.1. Finding Data in DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_03_organizing_data.html">2.2. Organizing the DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_04_cleaning_data.html">2.3. Cleaning the DataFrame</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_03_01_intro.html">3. Searching for Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_02_advanced_strings.html">3.1. Advanced Searching on Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_03_advanced_querying.html">3.2. Filter and Querying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_04_advanced_grouping.html">3.3. Grouping with Groupby()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_04_01_intro.html">4. Advanced Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_02_pandas_and_plots.html">4.1. Plotting Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_03_graphing_networks_with_pandas.html">4.2. Graphing Network Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_04_time_series_data.html">4.3. Time Series Data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART THREE: Natural Language Processing with spaCy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_01_01_intro.html">1. Introduction to spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_02_install_and_containers.html">1.1. The Basics of spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_03_linguistic_annotations.html">1.2. Getting Started with spaCy and its Linguistic Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_04_pipelines.html">1.3. spaCy’s Pipelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_02_01_intro.html">2. Rules-Based spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_02_entityruler.html">2.1. The EntityRuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_03_matcher.html">2.2. The Matcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_04_phrase_matcher.html">2.3. The PhraseMatcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_06_simple_regex.html">2.4. Using RegEx with spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_07_complex_regex.html">2.5. Working with Multi-Word Token Entities and RegEx in spaCy 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_03_01_intro.html">3. Solving a Domain-Specific Problem: A Case Study with Holocaust NER</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_02_cultivating_concentration_camp_dataset.html">3.1. Cultivating Good Datasets for Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_03_challenges.html">3.2. The Challenges of Holocaust NER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_04_building_holocaust_pipeline_rules_based.html">3.3. Creating Rules-Based Pipeline for Holocaust Documents</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FOUR: OTHER APPLICATIONS OF PYTHON </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_topic_modeling/04_01_01_intro.html">1. Topic Modeling in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_02_topic_modeling_concepts.html">1.1. What is Topic Modeling?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_03_clusters.html">1.2. Topics and Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_04_bigrams.html">1.3. Bigrams and Trigrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_02_lda_concept.html">1.4. LDA Topic Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_06_lda.html">1.5. Creating LDA in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_03_embedding_clustering.html">1.6. Transformer Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_04_top2vec.html">1.7. Top2Vec in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_booknlp/01_01_intro.html">2. Text Analysis with BookNLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/01_intro.html">2.1. Introduction to BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/02_starting.html">2.2. Getting Started with BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/03_files.html">2.3. The Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/04_character_analysis.html">2.4. Character Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/05_events.html">2.5. Events Analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_sna/06_01_01_intro.html">3. Social Network Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_02_basics.html">3.1. The Basic Concepts of Social Network Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_03_networkx.html">3.2. Introduction to NetworkX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_04_pyvis_basics.html">3.3. Producing Dynamic Graphs with PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_05_networkx_pyvis.html">3.4. NetworkX and PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_06_node_color.html">3.5. Adding Color to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_07_applied.html">3.6. SNA on Humanities Data: Structuring the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_08_applied2.html">3.7. SNA on Humanities Data: Creating the Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FIVE: DESIGNING AN APPLICATION WITH STREAMLIT</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_01_01_intro.html">1. Introduction to Streamlit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_02_streamlit.html">1.1. Creating Our First App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_03_displaying_data.html">1.2. Displaying Data in Streamlit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_04_input_widgets.html">1.3. Streamlit Input Widgets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_02_01_intro.html">2. Advanced Streamlit Features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_02_charts.html">2.1. Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_03_layout_design.html">2.2. Layout Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_04_cache.html">2.3. Streamlit Cache and Session States</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_05_custom_html.html">2.5. Custom HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_06_multiple_pages.html">2.6. Multi-Page Applications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_03_01_intro.html">3. Building a Database Query Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_02_database_query_app.html">3.1. Building a Database Query Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_03_cloud.html">3.2. Deploying an App in the Cloud with Streamlit Share</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/wjbmattingly/python_for_dh/blob/main/01_intro/01_02-03_data_structures.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/edit/main/01_intro/01_02-03_data_structures.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/issues/new?title=Issue%20on%20page%20%2F01_intro/01_02-03_data_structures.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_intro/01_02-03_data_structures.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Εισαγωγή στις Δομές Δεδομένων</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. Δομές Δεδομένων</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. Λίστες</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.2.1. Ευρετηρίαση μιας Λίστας</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.3. Πλειάδες</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">2.2.4. Μεταβαλλόμενη vs Αμετάβλητη</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-data-structure">2.2.5. Σύνολα (Bonus Data Structure)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.2.6. Λεξικά</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2.6.1. Ευρετηρίαση Λεξικών</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.7. Κουίζ</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="id1">
+<h1><span class="section-number">2.2. </span>Εισαγωγή στις Δομές Δεδομένων<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2><span class="section-number">2.2.1. </span>Δομές Δεδομένων<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Στο τελευταίο κεφάλαιο, γνωρίσαμε συμβολοσειρές (strings), ακέραιους αριθμούς (integers), δεκαδικούς αριθμούς (floats) και τιμές Boolean (booleans). Καθεμία από αυτές ήταν ένας τύπος δεδομένων. Οι συμβολοσειρές, για παράδειγμα, μας επέτρεψαν να εργαζόμαστε με κείμενο και οι αριθμοί μας επέτρεψαν να εργαζόμαστε με ακέραιους και δεκαδικούς αριθμούς. Σε αυτό το κεφάλαιο, θα ξεκινήσουμε να εργαζόμαστε με δομές δεδομένων. <strong>Δομές δεδομένων (Data structures)</strong> είναι τρόποι αποθήκευσης πολλών ειδών δεδομένων με συστηματικό τρόπο. Στην Python, αυτές δημιουργούνται ως αντικείμενα που μπορούν να αποθηκευθούν στη μνήμη και να κληθούν αργότερα σε ένα σενάριο. Χωρίζονται σε δύο κατηγορίες: μεταβαλλόμενες (mutable) και αμετάβλητες (immutable). Συναντήσαμε αυτούς τους όρους στο τελευταίο κεφάλαιο, αλλά θα εξερευνήσουμε τι σημαίνουν με μεγαλύτερο βάθος παρακάτω.</p>
+<p>Καθ’ όλη την ενότητα, θα μάθουμε για ορισμένους από τους βασικούς τύπους δομών δεδομένων, πώς διαφέρουν και πώς μπορούν να χρησιμοποιηθούν. Θα καλύψουμε αυτές με επιχειρησιακό τρόπο. Σε όλο αυτό το εγχειρίδιο, θα χρησιμοποιούμε αυτές τις δομές δεδομένων καθώς γράφουμε κώδικα και εκτελούμε εργασίες καθαρισμού και ανάλυσης δεδομένων. Για να διατηρήσουμε τα πράγματα απλά προς το παρόν, θα επικεντρωθούμε σε τέσσερις τύπους δομών δεδομένων: λίστες (lists), πλειάδες (tuples), σύνολα (sets) και λεξικά (dictionaries). Υπάρχουν άλλοι τύποι δομών δεδομένων στην Python, αλλά αυτές είναι οι τέσσερις βασικές που θα χρησιμοποιήσετε πιο συχνά.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.2.2. </span>Λίστες<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Η πρώτη δομή δεδομένων με την οποία θα εργαστούμε είναι γνωστή ως <strong>λίστα (list)</strong>. Οι λίστες είναι ακριβώς αυτό που ακούγεται, μια λίστα δεδομένων. Όπως θα δούμε παρακάτω, υπάρχουν πολλοί τρόποι αποθήκευσης πληροφοριών με τρόπο παρόμοιο με λίστες στην Python, όπως με πλειάδες (tuples) και σύνολα (sets), αλλά ο τρόπος που δημιουργούμε λίστες και ο τρόπος που αλληλεπιδρούμε με τις λίστες είναι διαφορετικός.</p>
+<p>Οι λίστες και οι πλειάδες είναι πανομοιότυπες με μια σημαντική εξαίρεση: οι λίστες είναι μεταβαλλόμενες (mutable). Αυτό σημαίνει ότι μπορείτε να δημιουργήσετε ένα αντικείμενο λίστας και στη συνέχεια να το τροποποιήσετε στη μνήμη. Αυτό σας επιτρέπει να κάνετε πολύ ισχυρά πράγματα σε λίστες που δεν μπορείτε να κάνετε σε πλειάδες. Και αυτές θα είναι μια από τις βασικές δομές δεδομένων που θα χρησιμοποιήσετε σε όλα τα έργα στις ψηφιακές ανθρωπιστικές επιστήμες. Ο λόγος; Συχνά πρέπει να προσαρμόσουμε τα δεδομένα ενώ τα χρησιμοποιούμε.</p>
+<p>Όπως με τα δεδομένα, μπορούμε να δημιουργήσουμε ένα αντικείμενο λίστας στη μνήμη δημιουργώντας μια μεταβλητή ακολουθούμενη από ένα σύμβολο ίσου. Για να πούμε στην Python ότι ο συγκεκριμένος τύπος αντικειμένου που δημιουργούμε είναι μια λίστα, χρησιμοποιούμε μια αγκύλη ανοίγματος και κλεισίματος. Κάθε στοιχείο της λίστας θα χωριστεί με κόμμα. Οι λίστες μπορούν να αποθηκεύσουν οποιοδήποτε τύπο δεδομένων. Για να το δούμε αυτό στη δράση, ας δημιουργήσουμε την πρώτη μας λίστα.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1.0, &#39;one&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h3><span class="section-number">2.2.2.1. </span>Ευρετηρίαση μιας Λίστας<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Στην Python, θα χρειαστεί συχνά να έχουμε πρόσβαση σε ένα τμήμα δεδομένων μέσα σε μια λίστα ή κάποια άλλη δομή δεδομένων. Αυτό είναι γνωστό ως <strong>ευρετηρίαση (indexing)</strong>. Ο τρόπος με τον οποίο ευρετηριάζουμε μια λίστα είναι με μια αγκύλη ανοίγματος και κλεισίματος μέσα στην οποία τοποθετούμε τη θέση στην οποία κάθονται τα δεδομένα που θέλουμε να έχουμε πρόσβαση. Είναι σημαντικό να σημειώσουμε ότι η Python είναι μια <strong>γλώσσα με ευρετηρίαση μηδέν (zero-index language)</strong>. Αυτό σημαίνει ότι ξεκινάμε πάντα με τον αριθμό 0 και στη συνέχεια μετράμε προς τα πάνω, άρα το στοιχείο που βρίσκεται στην πρώτη θέση της λίστας μας είναι ευρετήριο 0.</p>
+<p>Ας πάρουμε το στοιχείο στο ευρετήριο 0 στη first_list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Στο κελί παρακάτω, προσπαθήστε να πάρετε τη συμβολοσειρά “one” από τη first_list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1.0, &#39;one&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Προσέξτε ότι εκτυπώσαμε επιτυχώς τον αριθμό 1. Ωστόσο, συχνά είναι σημαντικό να ευρετηριάσουμε πολλαπλά στοιχεία σε μια λίστα. Εάν θέλουμε να το κάνουμε αυτό, χρησιμοποιούμε ξανά [ ]. Μέσα στις αγκύλες θα έχουμε μια θέση έναρξης και μια θέση λήξης. Η θέση λήξης θα είναι το σημείο μετά το οποίο θέλουμε να πάρουμε. Θα χωριστούν από :. Στον κώδικα, θα φαινόταν περίπου έτσι:</p>
+<p>index_item[start:end]</p>
+<p>Ας πούμε ότι θέλαμε να πάρουμε τα πρώτα 3 στοιχεία από τη λίστα, θα θέλαμε να κάνουμε κάτι τέτοιο.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Μπορούμε επίσης να εργαστούμε προς τα πίσω με την ευρετηρίαση. Μπορούμε, για παράδειγμα, να χρησιμοποιήσουμε -1 για να πάρουμε το τελευταίο στοιχείο της λίστας.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one
+</pre></div>
+</div>
+</div>
+</div>
+<p>Μπορούμε επίσης να χρησιμοποιήσουμε εύρος ευρετηρίασης για να πάρουμε τα τρία τελευταία στοιχεία. Στην Python, εάν ευρετηριάσετε μια λίστα χωρίς τελικό σημείο, θα πάρει όλα όσα υπάρχουν μέχρι το τέλος αυτής της λίστας. Μπορούμε να δούμε αυτό στα δύο παραδείγματα παρακάτω.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0, &#39;one&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Μπορούμε επίσης να κάνουμε το ίδιο προς τα πίσω πιάνοντας όλα τα ευρετήρια μέχρι το πρώτο ευρετήριο. Με άλλα λόγια, το στοιχείο στο ευρετήριο 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Στην εφαρμογή Trinket παρακάτω, προσπαθήστε να δημιουργήσετε μια λίστα και στη συνέχεια να την ευρετηριάσετε σε διαφορετικά σημεία.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">IFrame</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://trinket.io/embed/python3/3fe4c8f3f4&#39;</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="700"
+            height="500"
+            src="https://trinket.io/embed/python3/3fe4c8f3f4"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">2.2.3. </span>Πλειάδες<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><b>Πλειάδες (Tuples)</b> είναι λίστες δεδομένων που δεν μπορούν να αλλάξουν. Όταν κοιτάζουμε τις λίστες παραπάνω, θα δούμε ότι οι λίστες είναι ακριβώς το ίδιο με τις πλειάδες, εκτός ότι μπορούν να αλλάξουν. Μπορούμε να διακρίνουμε τις πλειάδες από τις λίστες από τον τρόπο με τον οποίο σχηματίζονται. Ενώ οι λίστες χρησιμοποιούν τετράγωνες αγκύλες, οι πλειάδες χρησιμοποιούν παρενθέσεις. Δημιουργούμε μια πλειάδα, όπως το παράδειγμα παρακάτω. Το αντικείμενό μας είναι first_tuple και η πλειάδα αποτελείται από τρία στοιχεία: ένας ακέραιος 1, ένας δεκαδικός 1.0 και μια συμβολοσειρά “one”. Οι λίστες και οι πλειάδες μπορούν να περιέχουν και τους τρεις αυτούς τύπους δεδομένων. Ο τρόπος με τον οποίο χωρίζουμε τα στοιχεία σε μια πλειάδα είναι με κόμμα.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 1.0, &#39;one&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Στην εφαρμογή Trinket παραπάνω, προσπαθήστε να δημιουργήσετε μια πλειάδα και να την ευρετηριάσετε.</p>
+</section>
+<section id="vs">
+<h2><span class="section-number">2.2.4. </span>Μεταβαλλόμενη vs Αμετάβλητη<a class="headerlink" href="#vs" title="Link to this heading">#</a></h2>
+<p>Όπως σημειώθηκε παραπάνω, οι πλειάδες είναι αμετάβλητες (immutable), που σημαίνει ότι δεν μπορούν να αλλάξουν. Ας δούμε ακριβώς τι σημαίνει αυτό στην πράξη. Ας πούμε ότι θέλαμε να προσθέσουμε σε μια λίστα. Μπορούμε να το κάνουμε αυτό με τη μέθοδο .append(). Αυτή θα πάρει ένα όρισμα (argument), ή τμήμα πληροφοριών τοποθετημένο μέσα στις παρενθέσεις. Θα μάθετε για τα ορίσματα αργότερα όταν θα συζητήσουμε τις συναρτήσεις και τις μεθόδους με μεγαλύτερο βάθος. Προς το παρόν, καταλάβετε ότι οι πληροφορίες που μεταφέρονται μέσα στις παρενθέσεις λένε στη μέθοδο ή τη συνάρτηση τι χρειάζεται για να εκτελέσει τη συνάρτηση. Σε αυτή την περίπτωση, .append() μας επιτρέπει να προσθέσουμε (append) κάτι σε μια λίστα. Το όρισμα που περνάμε, “one”, λέει τι θέλουμε να προσθέσουμε. Σε αυτή την περίπτωση, η συμβολοσειρά “one”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;one&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">first_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1.0, &#39;one&#39;, &#39;one&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Προσέξτε ότι δεν έχουμε σφάλμα. Αυτό συμβαίνει επειδή η λίστα μας είναι μεταβαλλόμενη (mutable), ή αλλάξιμη. Αυτό σημαίνει ότι μπορούμε να προσθέσουμε σε αυτήν, να διαγράψουμε στοιχεία από αυτήν και άλλες λειτουργίες που μας επιτρέπουν να αλλάξουμε τον τρόπο αποθήκευσης στη μνήμη. Οι πλειάδες, από την άλλη πλευρά, είναι αμετάβλητες (immutable), ή αναλλοίωτες. Ας προσπαθήσουμε να εκτελέσουμε την ίδια μέθοδο στη πλειάδα και ας δούμε τι συμβαίνει.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;one&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [27],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">first_tuple</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;one&quot;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;tuple&#39; object has no attribute &#39;append&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Προσέξτε ότι παίρνουμε ένα AttributeError (σφάλμα ιδιότητας). Αυτό σημαίνει ότι μια πλειάδα δεν έχει τη δυνατότητα να χρησιμοποιήσει τη μέθοδο append. Αυτό δεν υπάρχει για τις πλειάδες επειδή είναι αμετάβλητες (immutable) ή αναλλοίωτες. Ο μόνος τρόπος για να τροποποιήσουμε το όνομα του αντικειμένου, tuple1, είναι να το αντικαταστήσουμε εντελώς στη μνήμη.</p>
+<p>Στην εφαρμογή Trinket παραπάνω, πειραματιστείτε με το append δημιουργώντας μια λίστα και προσθέτοντας δεδομένα σε αυτήν.</p>
+</section>
+<section id="bonus-data-structure">
+<h2><span class="section-number">2.2.5. </span>Σύνολα (Bonus Data Structure)<a class="headerlink" href="#bonus-data-structure" title="Link to this heading">#</a></h2>
+<p>Υπάρχει μια άλλη δομή δεδομένων παρόμοια με λίστες και πλειάδες και την περιλαμβάνω εδώ ως μια bonus δομή δεδομένων. Αυτό είναι το σύνολο (set). Ένα <b>σύνολο (set)</b> είναι πανομοιότυπο με μια λίστα. Είναι μεταβαλλόμενη (mutable), που σημαίνει ότι μπορούμε να το ενημερώσουμε, αλλά σε αντίθεση με μια λίστα, δεν μπορεί να περιέχει διπλότυπα. Αυτό είναι χρήσιμο σε ειδικές περιστάσεις, όπως όταν πρέπει να αφαιρέσετε όλα τα διπλότυπα από μια λίστα. Το περιλαμβάνω εδώ απλώς για να γνωρίζετε ότι υπάρχουν άλλοι τύποι δομών δεδομένων.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">}</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">first_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, &#39;one&#39;, 1.1}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.2.6. </span>Λεξικά<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Όπως οι πλειάδες και οι λίστες, τα λεξικά (dictionaries) είναι μια δομή δεδομένων στην Python. Όπως και οι λίστες, τα λεξικά είναι μεταβαλλόμενα (mutable), που σημαίνει ότι μπορούν να αλλάξουν στη μνήμη. Σε αντίθεση με τις πλειάδες και τις λίστες, τα λεξικά δεν είναι λίστες δεδομένων. Αντ’ αυτού, έχουν δύο συστατικά: κλειδιά (keys) και τιμές (values). Αυτά τα δύο συστατικά χωρίζονται με κόλον. Όλα αυτά περιέχονται σε τετράγωνες παρενθέσεις. Στο παράδειγμα παρακάτω, έχουμε ένα λεξικό, a_dict, με κλειδί “name” και τιμή “William”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;William&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mattingly&quot;</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;first_name&#39;: &#39;William&#39;, &#39;last_name&#39;: &#39;Mattingly&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Στα έργα στις ψηφιακές ανθρωπιστικές επιστήμες, τα λεξικά είναι ιδιαίτερα χρήσιμα για τη δόμηση πολύπλοκων δεδομένων που ενδέχεται να έχετε σε ένα Excel με κάθε κλειδί να είναι ένας στήλη του Excel και κάθε τιμή να είναι η αντίστοιχη τιμή της. Το όνομα του λεξικού θα μπορούσε να είναι το όνομα του ατόμου στο οποίο αντιστοιχεί η σειρά. Όπως οι λίστες και οι πλειάδες, μπορείτε να ενσωματώσετε δομές δεδομένων μέσα σε ένα λεξικό Python.</p>
+<p>Ενώ θα μπορούσαμε ρεαλιστικά να αποθηκεύσουμε τα δεδομένα μας σε μια λίστα όπως παρακάτω (name_list), θα πρέπει να είμαστε συνεπείς και να τοποθετούμε πάντα το όνομα σε ευρετήριο 0 και το επώνυμο σε ευρετήριο 1. Αυτό εισάγει πιθανά προβλήματα αργότερα σε ένα έργο. Φανταστείτε εάν ένας προγραμματιστής έφυγε από ένα έργο. Χωρίς καλή τεκμηρίωση, δεν υπάρχει τίποτα εγγενές σε αυτή τη λίστα που ισοδυναμεί ευρετήριο 0 με το όνομα και ευρετήριο 1 με το επώνυμο. Εξαρτάται εξ ολοκλήρου από τον αναγνώστη των δεδομένων να κάνει νόημα αυτής της δομής δεδομένων.</p>
+<p>Θυμηθείτε, στον προγραμματισμό είναι πάντα καλύτερο να είστε ρητοί και να παράγετε κώδικα που μπορούν να κατανοήσουν και άλλοι. Το λεξικό μας επιτρέπει να δημιουργήσουμε κλειδιά που υποδεικνύουν με μεγαλύτερη ειδικότητα τον τύπο δεδομένων με τον οποίο εργαζόμαστε. Ξέρουμε από το λεξικό names παραπάνω ότι “William” είναι ένα όνομα και “Mattingly” είναι ένα επώνυμο χωρίς να χρειάζεται να σκεφτούμε σε ποιο ευρετήριο κάθεται κάθε συμβολοσειρά. Μπορούμε να το κάνουμε αυτό επειδή τα κλειδιά του λεξικού είναι ρητά.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;William&quot;</span><span class="p">,</span> <span class="s2">&quot;Mattingly&quot;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">name_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;William&#39;, &#39;Mattingly&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id7">
+<h3><span class="section-number">2.2.6.1. </span>Ευρετηρίαση Λεξικών<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Στην Python, θα πρέπει συχνά να ευρετηριάσουμε ένα λεξικό. Τα λεξικά, θυμηθείτε, είναι λίγο διαφορετικά από τις λίστες και τις πλειάδες. Αντί να είναι μια σειρά στοιχείων σε μια λίστα, ένα λεξικό είναι μια συλλογή κλειδιών και αντίστοιχων τιμών. Για να ευρετηριάσουμε ένα λεξικό, επομένως, πρέπει να εργαστούμε λίγο διαφορετικά. Αντί να ευρετηριάζουμε σε ένα συγκεκριμένο σημείο, ευρετηριάζουμε τα λεξικά σε ένα συγκεκριμένο κλειδί.</p>
+<p>Για να κατανοήσουμε αυτό, είναι καλύτερο να το δούμε στην πράξη, ας προσπαθήσουμε να πάρουμε το όνομα στο λεξικό names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="s2">&quot;first_name&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>William
+</pre></div>
+</div>
+</div>
+</div>
+<p>Στην εφαρμογή Trinket παρακάτω, δημιουργήστε ένα λεξικό και πρακτικός την ευρετηρίαση του σε διαφορετικά κλειδιά.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IFrame</span><span class="p">(</span><span class="s1">&#39;https://trinket.io/embed/python3/3fe4c8f3f4&#39;</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="700"
+            height="500"
+            src="https://trinket.io/embed/python3/3fe4c8f3f4"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.2.7. </span>Κουίζ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quiz</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1"># What kind of data structure is made with [ ]?</span>
+<span class="s1">mc</span>
+<span class="s1">* List</span>
+<span class="s1">-c t</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Tuple</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Dictionary</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1"># What kind of data structure is made with ()?</span>
+<span class="s1">mc</span>
+<span class="s1">* List</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Tuple</span>
+<span class="s1">-c t</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Dictionary</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1"># What kind of data structure is made with </span><span class="si">{}</span><span class="s1">?</span>
+<span class="s1">mc</span>
+<span class="s1">* List</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Tuple</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Dictionary</span>
+<span class="s1">-c t</span>
+<span class="s1">-f</span>
+
+<span class="s1"># What are the two parts of a dictionary?</span>
+<span class="s1">mc</span>
+<span class="s1">* Key</span>
+<span class="s1">-c t</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Value</span>
+<span class="s1">-c t</span>
+<span class="s1">-f</span>
+
+<span class="s1">* Index</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+
+<span class="s1"># What index does a Python list start at?</span>
+<span class="s1">mc</span>
+<span class="s1">* 0</span>
+<span class="s1">-c t</span>
+<span class="s1">-f</span>
+
+<span class="s1">* 1</span>
+<span class="s1">-c f</span>
+<span class="s1">-f</span>
+<span class="s1">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">jupyterquiz</span><span class="w"> </span><span class="kn">import</span> <span class="n">display_quiz</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">md2json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="n">myquiz</span> <span class="o">=</span> <span class="n">md2json</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">quiz</span><span class="p">)</span>
+<span class="n">myquiz</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">myquiz</span><span class="p">)</span>
+<span class="n">display_quiz</span><span class="p">(</span><span class="n">myquiz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div id="NiMzedNkbPoL" data-shufflequestions="False"
+               data-shuffleanswers="True"
+               data-numquestions="1000000"> <style>:root {
+    --medium-slate-blue: #6f78ffff;
+    --orange-pantone: #f75c03ff;
+    --russian-violet: #392061ff;
+    --maximum-yellow-red: #ffc857ff;
+    --viridian-green: #119da4ff;
+    --incorrect-red: #c80202;
+    --correct-green: #009113;
+}
+
+.Quiz {
+    max-width: 600px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    line-height: 1.1;
+    font-size: 16pt;
+}
+
+.QuizCode {
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.QuizCode>pre {
+    padding: 4px;
+}
+
+.Answer {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+}
+
+.Feedback {
+    font-size: 16pt;
+    text-align: center;
+    min-height: 2em;
+}
+
+.Input {
+    align: left;
+    font-size: 20pt;
+}
+
+.Input-text {
+    display: block;
+    margin: 10px;
+    color: inherit;
+    width: 140px;
+    background-color: #c0c0c0;
+    color: #fff;
+    padding: 5px;
+    padding-left: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: inherit;
+    line-height: 20pt;
+    border: none;
+    border-radius: 0.2rem;
+    transition: box-shadow 0.1s);
+}
+
+.Input-text:focus {
+    outline: none;
+    background-color: #c0c0c0;
+    box-shadow: 0.6rem 0.8rem 1.4rem -0.5rem #999999;
+}
+
+.MCButton {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.MCButton p {
+    color: inherit;
+}
+
+.MultipleChoiceQn {
+    padding: 10px;
+    background: var(--medium-slate-blue);
+    color: #fafafa;
+    border-radius: 10px;
+}
+
+.ManyChoiceQn {
+    padding: 10px;
+    background: var(--orange-pantone);
+    color: #fafafa;
+    border-radius: 10px;
+}
+
+.NumericQn {
+    padding: 10px;
+    background: var(--russian-violet);
+    color: #fafafa;
+    border-radius: 10px;
+}
+
+.NumericQn p {
+    color: inherit;
+}
+
+.InpLabel {
+    line-height: 34px;
+    float: left;
+    margin-right: 10px;
+    color: #101010;
+    font-size: 15pt;
+}
+
+.incorrect {
+    color: var(--incorrect-red);
+}
+
+.correct {
+    color: var(--correct-green);
+}
+
+.correctButton {
+    /*
+    background: var(--correct-green);
+   */
+    animation: correct-anim 0.6s ease;
+    animation-fill-mode: forwards;
+    color: #fafafa;
+    box-shadow: inset 0px 0px 5px #555555;
+    outline: none;
+}
+
+.incorrectButton {
+    animation: incorrect-anim 0.8s ease;
+    animation-fill-mode: forwards;
+    color: #fafafa;
+    box-shadow: inset 0px 0px 5px #555555;
+    outline: none;
+}
+
+@keyframes incorrect-anim {
+    100% {
+        background-color: var(--incorrect-red);
+    }
+}
+
+@keyframes correct-anim {
+    100% {
+        background-color: var(--correct-green);
+    }
+}</style><script type="text/Javascript">var questionsNiMzedNkbPoL=[{"question": "What kind of data structure is made with ()?", "type": "multiple_choice", "answers": [{"answer": "List", "correct": false, "feedback": "Incorrect."}, {"answer": "Tuple", "correct": true, "feedback": "Correct!"}, {"answer": "Dictionary", "correct": false, "feedback": "Incorrect."}]}, {"question": "What index does a Python list start at?", "type": "multiple_choice", "answers": [{"answer": "0", "correct": true, "feedback": "Correct!"}, {"answer": "1", "correct": false, "feedback": "Incorrect."}]}, {"question": "What kind of data structure is made with {}?", "type": "multiple_choice", "answers": [{"answer": "List", "correct": false, "feedback": "Incorrect."}, {"answer": "Tuple", "correct": false, "feedback": "Incorrect."}, {"answer": "Dictionary", "correct": true, "feedback": "Correct!"}]}, {"question": "What are the two parts of a dictionary?", "type": "many_choice", "answers": [{"answer": "Key", "correct": true, "feedback": "Correct!"}, {"answer": "Value", "correct": true, "feedback": "Correct!"}, {"answer": "Index", "correct": false, "feedback": "Incorrect."}]}, {"question": "What kind of data structure is made with [ ]?", "type": "multiple_choice", "answers": [{"answer": "List", "correct": true, "feedback": "Correct!"}, {"answer": "Tuple", "correct": false, "feedback": "Incorrect."}, {"answer": "Dictionary", "correct": false, "feedback": "Incorrect."}]}];
+    // Make a random ID
+function makeid(length) {
+    var result = [];
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() * charactersLength)));
+    }
+    return result.join('');
+}
+
+// Choose a random subset of an array. Can also be used to shuffle the array
+function getRandomSubarray(arr, size) {
+    var shuffled = arr.slice(0), i = arr.length, temp, index;
+    while (i--) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, size);
+}
+function check_mc() {
+    var id = this.id.split('-')[0];
+
+    //console.log("In check_mc(), id="+id);
+    //console.log(event.srcElement.id)           
+    //console.log(event.srcElement.dataset.correct)   
+    //console.log(event.srcElement.dataset.feedback)
+
+    var label = event.srcElement;
+    //console.log(label, label.nodeName);
+    var depth = 0;
+    while ((label.nodeName != "LABEL") && (depth < 20)) {
+        label = label.parentElement;
+        console.log(depth, label);
+        depth++;
+    }
+
+
+
+    var answers = label.parentElement.children;
+
+    //console.log(answers);
+
+
+    // Split behavior based on multiple choice vs many choice:
+    var fb = document.getElementById("fb" + id);
+    //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+    if (fb.dataset.numcorrect == 1) {
+        for (var i = 0; i < answers.length; i++) {
+            var child = answers[i];
+            //console.log(child);
+            child.className = "MCButton";
+        }
+
+
+
+        if (label.dataset.correct == "true") {
+            // console.log("Correct action");
+            if ("feedback" in label.dataset) {
+                fb.textContent = jaxify(label.dataset.feedback);
+            } else {
+                fb.textContent = "Correct!";
+            }
+            label.classList.add("correctButton");
+
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+
+        } else {
+            if ("feedback" in label.dataset) {
+                fb.textContent = jaxify(label.dataset.feedback);
+            } else {
+                fb.textContent = "Incorrect -- try again.";
+            }
+            //console.log("Error action");
+            label.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+    }
+    else {
+        var reset = false;
+        var feedback;
+        if (label.dataset.correct == "true") {
+            if ("feedback" in label.dataset) {
+                feedback = jaxify(label.dataset.feedback);
+            } else {
+                feedback = "Correct!";
+            }
+            if (label.dataset.answered <= 0) {
+                if (fb.dataset.answeredcorrect < 0) {
+                    fb.dataset.answeredcorrect = 1;
+                    reset = true;
+                } else {
+                    fb.dataset.answeredcorrect++;
+                }
+                if (reset) {
+                    for (var i = 0; i < answers.length; i++) {
+                        var child = answers[i];
+                        child.className = "MCButton";
+                        child.dataset.answered = 0;
+                    }
+                }
+                label.classList.add("correctButton");
+                label.dataset.answered = 1;
+                fb.className = "Feedback";
+                fb.classList.add("correct");
+
+            }
+        } else {
+            if ("feedback" in label.dataset) {
+                feedback = jaxify(label.dataset.feedback);
+            } else {
+                feedback = "Incorrect -- try again.";
+            }
+            if (fb.dataset.answeredcorrect > 0) {
+                fb.dataset.answeredcorrect = -1;
+                reset = true;
+            } else {
+                fb.dataset.answeredcorrect--;
+            }
+
+            if (reset) {
+                for (var i = 0; i < answers.length; i++) {
+                    var child = answers[i];
+                    child.className = "MCButton";
+                    child.dataset.answered = 0;
+                }
+            }
+            label.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+
+
+        var numcorrect = fb.dataset.numcorrect;
+        var answeredcorrect = fb.dataset.answeredcorrect;
+        if (answeredcorrect >= 0) {
+            fb.textContent = feedback + " [" + answeredcorrect + "/" + numcorrect + "]";
+        } else {
+            fb.textContent = feedback + " [" + 0 + "/" + numcorrect + "]";
+        }
+
+
+    }
+
+    if (typeof MathJax != 'undefined') {
+        var version = MathJax.version;
+        console.log('MathJax version', version);
+        if (version[0] == "2") {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        } else if (version[0] == "3") {
+            MathJax.typeset([fb]);
+        }
+    } else {
+        console.log('MathJax not detected');
+    }
+
+}
+
+function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
+    var shuffled;
+    if (shuffle_answers == "True") {
+        //console.log(shuffle_answers+" read as true");
+        shuffled = getRandomSubarray(qa.answers, qa.answers.length);
+    } else {
+        //console.log(shuffle_answers+" read as false");
+        shuffled = qa.answers;
+    }
+
+
+    var num_correct = 0;
+
+
+
+    shuffled.forEach((item, index, ans_array) => {
+        //console.log(answer);
+
+        // Make input element
+        var inp = document.createElement("input");
+        inp.type = "radio";
+        inp.id = "quizo" + id + index;
+        inp.style = "display:none;";
+        aDiv.append(inp);
+
+        //Make label for input element
+        var lab = document.createElement("label");
+        lab.className = "MCButton";
+        lab.id = id + '-' + index;
+        lab.onclick = check_mc;
+        var aSpan = document.createElement('span');
+        aSpan.classsName = "";
+        //qDiv.id="quizQn"+id+index;
+        if ("answer" in item) {
+            aSpan.innerHTML = jaxify(item.answer);
+            //aSpan.innerHTML=item.answer;
+        }
+        lab.append(aSpan);
+
+        // Create div for code inside question
+        var codeSpan;
+        if ("code" in item) {
+            codeSpan = document.createElement('span');
+            codeSpan.id = "code" + id + index;
+            codeSpan.className = "QuizCode";
+            var codePre = document.createElement('pre');
+            codeSpan.append(codePre);
+            var codeCode = document.createElement('code');
+            codePre.append(codeCode);
+            codeCode.innerHTML = item.code;
+            lab.append(codeSpan);
+            //console.log(codeSpan);
+        }
+
+        //lab.textContent=item.answer;
+
+        // Set the data attributes for the answer
+        lab.setAttribute('data-correct', item.correct);
+        if (item.correct) {
+            num_correct++;
+        }
+        if ("feedback" in item) {
+            lab.setAttribute('data-feedback', item.feedback);
+        }
+        lab.setAttribute('data-answered', 0);
+
+        aDiv.append(lab);
+
+    });
+
+    if (num_correct > 1) {
+        outerqDiv.className = "ManyChoiceQn";
+    } else {
+        outerqDiv.className = "MultipleChoiceQn";
+    }
+
+    return num_correct;
+
+}
+function check_numeric(ths, event) {
+
+    if (event.keyCode === 13) {
+        ths.blur();
+
+        var id = ths.id.split('-')[0];
+
+        var submission = ths.value;
+        if (submission.indexOf('/') != -1) {
+            sub_parts = submission.split('/');
+            //console.log(sub_parts);
+            submission = sub_parts[0] / sub_parts[1];
+        }
+        //console.log("Reader entered", submission);
+
+        if ("precision" in ths.dataset) {
+            precision = ths.dataset.precision;
+            // console.log("1:", submission)
+            submission = Math.round((1 * submission + Number.EPSILON) * 10 ** precision) / 10 ** precision;
+            // console.log("Rounded to ", submission, " precision=", precision  );
+        }
+
+
+        //console.log("In check_numeric(), id="+id);
+        //console.log(event.srcElement.id)           
+        //console.log(event.srcElement.dataset.feedback)
+
+        var fb = document.getElementById("fb" + id);
+        fb.style.display = "none";
+        fb.textContent = "Incorrect -- try again.";
+
+        answers = JSON.parse(ths.dataset.answers);
+        //console.log(answers);
+
+        var defaultFB = "";
+        var correct;
+        var done = false;
+        answers.every(answer => {
+            //console.log(answer.type);
+
+            correct = false;
+            // if (answer.type=="value"){
+            if ('value' in answer) {
+                if (submission == answer.value) {
+                    fb.textContent = jaxify(answer.feedback);
+                    correct = answer.correct;
+                    //console.log(answer.correct);
+                    done = true;
+                }
+                // } else if (answer.type=="range") {
+            } else if ('range' in answer) {
+                //console.log(answer.range);
+                if ((submission >= answer.range[0]) && (submission < answer.range[1])) {
+                    fb.textContent = jaxify(answer.feedback);
+                    correct = answer.correct;
+                    //console.log(answer.correct);
+                    done = true;
+                }
+            } else if (answer.type == "default") {
+                defaultFB = answer.feedback;
+            }
+            if (done) {
+                return false; // Break out of loop if this has been marked correct
+            } else {
+                return true; // Keep looking for case that includes this as a correct answer
+            }
+        });
+
+        if ((!done) && (defaultFB != "")) {
+            fb.innerHTML = jaxify(defaultFB);
+            //console.log("Default feedback", defaultFB);
+        }
+
+        fb.style.display = "block";
+        if (correct) {
+            ths.className = "Input-text";
+            ths.classList.add("correctButton");
+            fb.className = "Feedback";
+            fb.classList.add("correct");
+        } else {
+            ths.className = "Input-text";
+            ths.classList.add("incorrectButton");
+            fb.className = "Feedback";
+            fb.classList.add("incorrect");
+        }
+        if (typeof MathJax != 'undefined') {
+            var version = MathJax.version;
+            console.log('MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([fb]);
+            }
+        } else {
+            console.log('MathJax not detected');
+        }
+        return false;
+    }
+
+}
+
+function isValid(el, charC) {
+    //console.log("Input char: ", charC);
+    if (charC == 46) {
+        if (el.value.indexOf('.') === -1) {
+            return true;
+        } else if (el.value.indexOf('/') != -1) {
+            parts = el.value.split('/');
+            if (parts[1].indexOf('.') === -1) {
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
+    } else if (charC == 47) {
+        if (el.value.indexOf('/') === -1) {
+            if ((el.value != "") && (el.value != ".")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else if (charC == 45) {
+        edex = el.value.indexOf('e');
+        if (edex == -1) {
+            edex = el.value.indexOf('E');
+        }
+
+        if (el.value == "") {
+            return true;
+        } else if (edex == (el.value.length - 1)) { // If just after e or E
+            return true;
+        } else {
+            return false;
+        }
+    } else if (charC == 101) { // "e"
+        if ((el.value.indexOf('e') === -1) && (el.value.indexOf('E') === -1) && (el.value.indexOf('/') == -1)) {
+            // Prev symbol must be digit or decimal point:
+            if (el.value.slice(-1).search(/\d/) >= 0) {
+                return true;
+            } else if (el.value.slice(-1).search(/\./) >= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        if (charC > 31 && (charC < 48 || charC > 57))
+            return false;
+    }
+    return true;
+}
+
+function numeric_keypress(evnt) {
+    var charC = (evnt.which) ? evnt.which : evnt.keyCode;
+
+    if (charC == 13) {
+        check_numeric(this, evnt);
+    } else {
+        return isValid(this, charC);
+    }
+}
+
+
+
+
+
+function make_numeric(qa, outerqDiv, qDiv, aDiv, id) {
+
+
+
+    //console.log(answer);
+
+
+    outerqDiv.className = "NumericQn";
+    aDiv.style.display = 'block';
+
+    var lab = document.createElement("label");
+    lab.className = "InpLabel";
+    lab.textContent = "Type numeric answer here:";
+    aDiv.append(lab);
+
+    var inp = document.createElement("input");
+    inp.type = "text";
+    //inp.id="input-"+id;
+    inp.id = id + "-0";
+    inp.className = "Input-text";
+    inp.setAttribute('data-answers', JSON.stringify(qa.answers));
+    if ("precision" in qa) {
+        inp.setAttribute('data-precision', qa.precision);
+    }
+    aDiv.append(inp);
+    //console.log(inp);
+
+    //inp.addEventListener("keypress", check_numeric);
+    //inp.addEventListener("keypress", numeric_keypress);
+    /*
+    inp.addEventListener("keypress", function(event) {
+        return numeric_keypress(this, event);
+    }
+                        );
+                        */
+    //inp.onkeypress="return numeric_keypress(this, event)";
+    inp.onkeypress = numeric_keypress;
+    inp.onpaste = event => false;
+
+    inp.addEventListener("focus", function (event) {
+        this.value = "";
+        return false;
+    }
+    );
+
+
+}
+function jaxify(string) {
+    var mystring = string;
+
+    count = 0;
+    var loc = mystring.search(/([^\\]|^)(\$)/);
+
+    count2 = 0;
+    var loc2 = mystring.search(/([^\\]|^)(\$\$)/);
+
+    //console.log(loc);
+
+    while ((loc >= 0) || (loc2 >= 0)) {
+
+        /* Have to replace all the double $$ first with current implementation */
+        if (loc2 >= 0) {
+            if (count2 % 2 == 0) {
+                mystring = mystring.replace(/([^\\]|^)(\$\$)/, "$1\\[");
+            } else {
+                mystring = mystring.replace(/([^\\]|^)(\$\$)/, "$1\\]");
+            }
+            count2++;
+        } else {
+            if (count % 2 == 0) {
+                mystring = mystring.replace(/([^\\]|^)(\$)/, "$1\\(");
+            } else {
+                mystring = mystring.replace(/([^\\]|^)(\$)/, "$1\\)");
+            }
+            count++;
+        }
+        loc = mystring.search(/([^\\]|^)(\$)/);
+        loc2 = mystring.search(/([^\\]|^)(\$\$)/);
+        //console.log(mystring,", loc:",loc,", loc2:",loc2);
+    }
+
+    //console.log(mystring);
+    return mystring;
+}
+
+
+function show_questions(json, mydiv) {
+    //var mydiv=document.getElementById(myid);
+    var shuffle_questions = mydiv.dataset.shufflequestions;
+    var num_questions = mydiv.dataset.numquestions;
+    var shuffle_answers = mydiv.dataset.shuffleanswers;
+
+    if (num_questions > json.length) {
+        num_questions = json.length;
+    }
+
+    var questions;
+    if ((num_questions < json.length) || (shuffle_questions == "True")) {
+        //console.log(num_questions+","+json.length);
+        questions = getRandomSubarray(json, num_questions);
+    } else {
+        questions = json;
+    }
+
+    //console.log("SQ: "+shuffle_questions+", NQ: " + num_questions + ", SA: ", shuffle_answers);
+
+    // Iterate over questions
+    questions.forEach((qa, index, array) => {
+        //console.log(qa.question); 
+
+        var id = makeid(8);
+        //console.log(id);
+
+
+        // Create Div to contain question and answers
+        var iDiv = document.createElement('div');
+        iDiv.id = 'quizWrap' + id + index;
+        iDiv.className = 'Quiz';
+        mydiv.appendChild(iDiv);
+        // iDiv.innerHTML=qa.question;
+
+        var outerqDiv = document.createElement('div');
+        outerqDiv.id = "OuterquizQn" + id + index;
+        //qDiv.textContent=qa.question;
+        iDiv.append(outerqDiv);
+
+        // Create div to contain question part
+        var qDiv = document.createElement('div');
+        qDiv.id = "quizQn" + id + index;
+        //qDiv.textContent=qa.question;
+        qDiv.innerHTML = jaxify(qa.question);
+        outerqDiv.append(qDiv);
+
+        // Create div for code inside question
+        var codeDiv;
+        if ("code" in qa) {
+            codeDiv = document.createElement('div');
+            codeDiv.id = "code" + id + index;
+            codeDiv.className = "QuizCode";
+            var codePre = document.createElement('pre');
+            codeDiv.append(codePre);
+            var codeCode = document.createElement('code');
+            codePre.append(codeCode);
+            codeCode.innerHTML = qa.code;
+            outerqDiv.append(codeDiv);
+            //console.log(codeDiv);
+        }
+
+
+        // Create div to contain answer part
+        var aDiv = document.createElement('div');
+        aDiv.id = "quizAns" + id + index;
+        aDiv.className = 'Answer';
+        iDiv.append(aDiv);
+
+        //console.log(qa.type);
+
+        var num_correct;
+        if (qa.type == "multiple_choice") {
+            num_correct = make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id);
+        } else if (qa.type == "many_choice") {
+            num_correct = make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id);
+        } else if (qa.type == "numeric") {
+            //console.log("numeric");
+            make_numeric(qa, outerqDiv, qDiv, aDiv, id);
+        }
+
+
+        //Make div for feedback
+        var fb = document.createElement("div");
+        fb.id = "fb" + id;
+        //fb.style="font-size: 20px;text-align:center;";
+        fb.className = "Feedback";
+        fb.setAttribute("data-answeredcorrect", 0);
+        fb.setAttribute("data-numcorrect", num_correct);
+        iDiv.append(fb);
+
+
+    });
+    //console.log("At end of show_questions");
+    if (typeof MathJax != 'undefined') {
+        console.log("MathJax version", MathJax.version);
+        var version = MathJax.version;
+        setTimeout(function(){
+            var version = MathJax.version;
+            console.log('After sleep, MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([mydiv]);
+            }
+        }, 500);
+if (typeof version == 'undefined') {
+        } else
+        {
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([mydiv]);
+            } else {
+                console.log("MathJax not found");
+            }
+        }
+    }
+    return false;
+}
+
+        {
+        show_questions(questionsNiMzedNkbPoL,  NiMzedNkbPoL);
+        }
+        </script>
+        </div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_02-02_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.1. </span>Εισαγωγή στα Δεδομένα</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_03-01_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Βρόχοι και Λογική</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. Δομές Δεδομένων</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. Λίστες</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.2.1. Ευρετηρίαση μιας Λίστας</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.3. Πλειάδες</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs">2.2.4. Μεταβαλλόμενη vs Αμετάβλητη</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-data-structure">2.2.5. Σύνολα (Bonus Data Structure)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.2.6. Λεξικά</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2.6.1. Ευρετηρίαση Λεξικών</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.7. Κουίζ</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

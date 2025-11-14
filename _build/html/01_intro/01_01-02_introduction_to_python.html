@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.1. Εισαγωγή στην Python &#8212; Introduction to Python for Humanists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_intro/01_01-02_introduction_to_python';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.2. Εγκατάσταση της Python" href="01_01-03_installing_python.html" />
+    <link rel="prev" title="1. Εισαγωγή στην Python" href="01_01-01_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/chapman-logo.jpg" class="logo__image only-light" alt="Introduction to Python for Humanists - Home"/>
+    <script>document.write(`<img src="../_static/chapman-logo.jpg" class="logo__image only-dark" alt="Introduction to Python for Humanists - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <p align="center">INTRODUCTION TO PYTHON FOR HUMANISTS</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PREFACE</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_preface/00_01_preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART ONE: The Basics of Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="01_01-01_intro.html">1. Εισαγωγή στην Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Εισαγωγή στην Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_01-03_installing_python.html">1.2. Εγκατάσταση της Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_01-04_coding_basics.html">1.3. Βασικά Στοιχεία Προγραμματισμού</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_02-01_intro.html">2. Δεδομένα και Δομές Δεδομένων</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_02-02_data.html">2.1. Εισαγωγή στα Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_02-03_data_structures.html">2.2. Εισαγωγή στις Δομές Δεδομένων</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_03-01_intro.html">3. Βρόχοι και Λογική</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_03-02_loops.html">3.1. Εισαγωγή στους Βρόχους</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_03-03_conditionals.html">3.2. Δηλώσεις Συνθήκης</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_04-01_intro.html">4. Επίσημος Προγραμματισμός: Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_04-02_functions.html">4.1. Συναρτήσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_04-03_classes.html">4.2. Κλάσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_04-04_libraries.html">4.3. Βιβλιοθήκες στην Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_05-01_intro.html">5. Εργασία με Εξωτερικά Δεδομένα</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_05-02_texts.html">5.1. Εργασία με Κειμενικά Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_05-03_json.html">5.2. Εργασία με Δεδομένα JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_05-04_multiple_files.html">5.3. Εργασία με Πολλαπλά Αρχεία</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_06-01_intro.html">6. Εργασία με Δεδομένα στο Ιστό</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_06-02_html.html">6.1. Εισαγωγή στην HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_06-03_scraping_pages.html">6.2. Scraping Ιστοσελίδων με τις Requests και BeautifulSoup</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART TWO: Data Analysis with Pandas (Work in Progress)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_01_01_intro.html">1. Introduction to Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_02_introduction_to_pandas.html">1.1. Introduction to Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_03_the_basics.html">1.2. The Basics of Pandas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_02_01_intro.html">2. Working with Data in Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_02_finding_data.html">2.1. Finding Data in DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_03_organizing_data.html">2.2. Organizing the DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_04_cleaning_data.html">2.3. Cleaning the DataFrame</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_03_01_intro.html">3. Searching for Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_02_advanced_strings.html">3.1. Advanced Searching on Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_03_advanced_querying.html">3.2. Filter and Querying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_04_advanced_grouping.html">3.3. Grouping with Groupby()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_04_01_intro.html">4. Advanced Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_02_pandas_and_plots.html">4.1. Plotting Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_03_graphing_networks_with_pandas.html">4.2. Graphing Network Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_04_time_series_data.html">4.3. Time Series Data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART THREE: Natural Language Processing with spaCy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_01_01_intro.html">1. Introduction to spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_02_install_and_containers.html">1.1. The Basics of spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_03_linguistic_annotations.html">1.2. Getting Started with spaCy and its Linguistic Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_04_pipelines.html">1.3. spaCy’s Pipelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_02_01_intro.html">2. Rules-Based spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_02_entityruler.html">2.1. The EntityRuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_03_matcher.html">2.2. The Matcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_04_phrase_matcher.html">2.3. The PhraseMatcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_06_simple_regex.html">2.4. Using RegEx with spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_07_complex_regex.html">2.5. Working with Multi-Word Token Entities and RegEx in spaCy 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_03_01_intro.html">3. Solving a Domain-Specific Problem: A Case Study with Holocaust NER</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_02_cultivating_concentration_camp_dataset.html">3.1. Cultivating Good Datasets for Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_03_challenges.html">3.2. The Challenges of Holocaust NER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_04_building_holocaust_pipeline_rules_based.html">3.3. Creating Rules-Based Pipeline for Holocaust Documents</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FOUR: OTHER APPLICATIONS OF PYTHON </span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_topic_modeling/04_01_01_intro.html">1. Topic Modeling in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_02_topic_modeling_concepts.html">1.1. What is Topic Modeling?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_03_clusters.html">1.2. Topics and Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_01_04_bigrams.html">1.3. Bigrams and Trigrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_02_lda_concept.html">1.4. LDA Topic Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_02_06_lda.html">1.5. Creating LDA in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_03_embedding_clustering.html">1.6. Transformer Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_topic_modeling/04_03_04_top2vec.html">1.7. Top2Vec in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_booknlp/01_01_intro.html">2. Text Analysis with BookNLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/01_intro.html">2.1. Introduction to BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/02_starting.html">2.2. Getting Started with BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/03_files.html">2.3. The Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/04_character_analysis.html">2.4. Character Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/05_events.html">2.5. Events Analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_sna/06_01_01_intro.html">3. Social Network Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_02_basics.html">3.1. The Basic Concepts of Social Network Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_03_networkx.html">3.2. Introduction to NetworkX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_04_pyvis_basics.html">3.3. Producing Dynamic Graphs with PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_05_networkx_pyvis.html">3.4. NetworkX and PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_06_node_color.html">3.5. Adding Color to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_07_applied.html">3.6. SNA on Humanities Data: Structuring the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_08_applied2.html">3.7. SNA on Humanities Data: Creating the Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FIVE: DESIGNING AN APPLICATION WITH STREAMLIT</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_01_01_intro.html">1. Introduction to Streamlit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_02_streamlit.html">1.1. Creating Our First App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_03_displaying_data.html">1.2. Displaying Data in Streamlit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_04_input_widgets.html">1.3. Streamlit Input Widgets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_02_01_intro.html">2. Advanced Streamlit Features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_02_charts.html">2.1. Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_03_layout_design.html">2.2. Layout Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_04_cache.html">2.3. Streamlit Cache and Session States</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_05_custom_html.html">2.5. Custom HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_06_multiple_pages.html">2.6. Multi-Page Applications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_03_01_intro.html">3. Building a Database Query Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_02_database_query_app.html">3.1. Building a Database Query Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_03_cloud.html">3.2. Deploying an App in the Cloud with Streamlit Share</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/wjbmattingly/python_for_dh/blob/main/01_intro/01_01-02_introduction_to_python.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/edit/main/01_intro/01_01-02_introduction_to_python.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/issues/new?title=Issue%20on%20page%20%2F01_intro/01_01-02_introduction_to_python.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_intro/01_01-02_introduction_to_python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Εισαγωγή στην Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1.1. Γιατί Θα Έπρεπε οι Ερευνητές των Ανθρωπιστικών Επιστημών να Μάθουν Προγραμματισμό;</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to">1.1.1.1. To Χρονοδιάγραμμα για την Έναρξη ενός Μεγάλου Έργου Ψηφιακής Ιστορίας</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1.1.2. Ο Αυτάρκης Ερευνητής των Ψηφιακών Ανθρωπιστικών Επιστημών</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1.3. Άλλα Οφέλη</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. Τι είναι η Python;</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.3. Γιατί Python;</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="python">
+<h1><span class="section-number">1.1. </span>Εισαγωγή στην Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2><span class="section-number">1.1.1. </span>Γιατί Θα Έπρεπε οι Ερευνητές των Ανθρωπιστικών Επιστημών να Μάθουν Προγραμματισμό;<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Πριν ξεκινήσουμε αυτό το βιβλίο, ας ξεκινήσουμε με ένα απλό ερώτημα. <em>Γιατί θα έπρεπε οι επιστήμονες των ανθρωπιστικών επιστημών να μάθουν προγραμματισμό;</em> Για να το απαντήσουμε, ας εξετάσουμε ένα ιδανικό έργο ψηφιακών ανθρωπιστικών σπουδών.</p>
+<p>Σε ένα ιδανικό έργο ψηφιακών ανθρωπιστικών σπουδών, ένας ερευνητής (ή ομάδα ερευνητών) θα αξιοποιεί την <strong>γνώση του πεδίου του</strong> ή το εμπειρικό του πεδίο. Ως ειδικός στο πεδίο του, αυτός ο υπεύθυνος του έργου, γνωστός καλύτερα ως κύριος ερευνητής (PI), θα μεταφέρει την ιδέα του στην ομάδα του, η οποία θα αποτελείται από άλλους στο πεδίο του και συνήθως από έναν τεχνικό ηγέτη. Αυτός ο τεχνικός ηγέτης θα χειριστεί (ανάλογα με τη χρηματοδότηση) όλες τις τεχνικές πτυχές του έργου (ανάπτυξη ιστοσελίδων, προγραμματισμό, διαχείριση δεδομένων κ.λπ.) ή θα ηγηθεί μιας ομάδας για να χειριστεί όλες τις τεχνικές πτυχές. Αυτό είναι το ιδανικό σενάριο. Κάθε άτομο στην ομάδα κάνει αυτό που κάνει καλύτερα.</p>
+<p>Ένα τέτοιο έργο απαιτεί δύο πράγματα που είναι σε υψηλή ζήτηση από τους περισσότερους ερευνητές: χρηματοδότηση και χρόνο. Ο αυτάρκης ερευνητής που μπορεί να αξιοποιήσει τη γνώση του πεδίου του και ταυτόχρονα να λειτουργήσει με τεχνική ικανότητα σε ένα έργο μειώνει δραστικά και τα δύο αυτά προβλήματα με διάφορους τρόπους. Για να καταλάβουμε πώς, πρέπει πρώτα να καταλάβουμε πώς λαμβάνουν χρηματοδότηση τα έργα ψηφιακών ανθρωπιστικών σπουδών.</p>
+<section id="to">
+<h3><span class="section-number">1.1.1.1. </span>To Χρονοδιάγραμμα για την Έναρξη ενός Μεγάλου Έργου Ψηφιακής Ιστορίας<a class="headerlink" href="#to" title="Link to this heading">#</a></h3>
+<p>Τα μεγάλα ψηφιακά έργα συχνά διαρκούν χρόνια για να ξεκινήσουν. Αυτά τα έργα συχνά ξεκινούν με έναν ερευνητή (ή ερευνητές) που επιθυμούν να εξερευνήσουν ένα ερώτημα ή να δημιουργήσουν μια ψηφιακή πλατφόρμα για μια πτυχή της έρευνάς τους. Αυτοί οι μελετητές θα απευθυνθούν σε άλλους στο πεδίο τους για να μετρήσουν το ενδιαφέρον. Αυτή η διαδικασία μπορεί να διαρκέσει αρκετούς μήνες ή ένα χρόνο, ειδικά αν οι ερευνητές περιμένουν να παρουσιάσουν την ιδέα τους στο επόμενο συνέδριο στο πεδίο τους.</p>
+<p>Εάν υπάρχει ενδιαφέρον για ένα τέτοιο έργο, ο κύριος ερευνητής (PI) του έργου θα βρει έναν τεχνικό ειδικό που μπορεί να του πει αν το έργο είναι δυνατό και να λάβει εκτίμηση του κόστους του. Εάν ο PI δεν έχει τεχνικό ειδικό και δεν μπορεί να βρει έναν που να σχετίζεται με το πανεπιστήμιό του, αυτό μπορεί να είναι προκλητικό και χρονοβόρο. Όπως θα δούμε, η σχέση μεταξύ PI και τεχνικού ηγέτη είναι ένας μοναδικός δεσμός που απαιτεί καλή επικοινωνία και από τα δύο μέρη. Η επιλογή του σωστού τεχνικού ηγέτη είναι σημαντική γιατί η αμοιβή του μπορεί να είναι ένα από τα μεγαλύτερα στοιχεία του προϋπολογισμού. Είναι επίσης το άτομο που κάνει την όραση του PI ψηφιακή πραγματικότητα.</p>
+<p>Στη συνέχεια, ο PI θα δημιουργήσει μια λίστα ευκαιριών χρηματοδότησης για το έργο και μετά θα αρχίσει να υποβάλλει αιτήσεις χρηματοδότησης. Κάθε αίτηση μπορεί να διαρκέσει αρκετούς μήνες για να ολοκληρωθεί. Μόλις ολοκληρωθεί, ο PI θα υποβάλει συνήθως την αίτηση στον φορέα χρηματοδότησης μέσω του πανεπιστημίου του. Εάν υπάρχουν πολλαπλοί PI στο έργο σε διαφορετικά πανεπιστήμια, αυτή η διαδικασία μπορεί να είναι πιο περίπλοκη καθώς όλα τα ιδρύματα συνήθως πρέπει να επικοινωνούν μεταξύ τους.</p>
+<p>Το πανεπιστήμιο συνήθως εξετάζει όλα τα υλικά. Θα ενδιαφέρονται ιδιαίτερα για τον προϋπολογισμό. Αυτή η διαδικασία μπορεί να διαρκέσει μερικές εβδομάδες ενώ το πανεπιστήμιο διασφαλίζει ότι όλοι οι αριθμοί είναι σωστοί. Σε τελική ανάλυση, τα περισσότερα πανεπιστήμια θα λαμβάνουν ένα μέρος των χρημάτων της επιχορήγησης (μερικές φορές έως 30%), οπότε θέλουν να βεβαιωθούν ότι θα δουν τους αριθμούς πρώτα.</p>
+<p>Μετά από αυτό, το πανεπιστήμιο θα υποβάλει την επιχορήγηση. Ανάλογα με τον φορέα χρηματοδότησης, ο χρόνος αναμονής μπορεί να κυμαίνεται από μερικούς μήνες έως περίπου ένα χρόνο. Κατά τη διάρκεια αυτού του χρόνου, το ψηφιακό έργο ενδέχεται να μην προχωρήσει πολύ ή καθόλου. Αντίθετα, μπορεί να παραμείνει σε περίοδο αναμονής ενώ ο PI περιμένει να ακούσει.</p>
+<p>Όταν κοιτάζουμε αυτό το χρονοδιάγραμμα, σημαίνει ότι από την αρχική ιδέα έως την έναρξη του έργου, ακόμη και στο ιδανικό σενάριο, μπορεί να χρειαστούν ρεαλιστικά 2-3 χρόνια πριν ξεκινήσει το έργο. Όλα αυτά συνοδεύονται από έναν βαθμό κινδύνου. Ο PI πιστεύει στην ιδέα, έχει επίσης μετρήσει την κοινότητα για να γνωρίζει ότι υπάρχει ενδιαφέρον γι’ αυτήν, και έχει βρει έναν τεχνικό ηγέτη που μπορεί να κάνει τη δουλειά, αλλά πολλά πράγματα μπορούν να συμβούν σε 2-3 χρόνια. Σε εκείνον τον χρόνο, νέες εξελίξεις στο πεδίο μπορεί να έχουν αλλάξει την τροχιά του έργου (ή, στη χειρότερη περίπτωση, να το έχουν καταστήσει περιττό). Επιπλέον, νέες ψηφιακές προσεγγίσεις/μέθοδοι μπορεί να σημαίνουν ότι απαιτείται μια εντελώς νέα προσέγγιση. Αυτό είναι ιδιαίτερα συνηθισμένο σήμερα αν το έργο περιλαμβάνει μηχανική μάθηση, ένα πεδίο στο οποίο νέες εξελίξεις συμβαίνουν κάθε εβδομάδα. Επιπλέον, ο τεχνικός ηγέτης ενδέχεται να έχει βρει δουλειά κάπου αλλού. (Αυτό συμβαίνει καθώς δεν συμβάλλονται έως ότου λάβουν την επιχορήγηση). Τέλος, δεν υπάρχει καμία εγγύηση ότι οι φορείς χρηματοδότησης εκτιμούν την ιδέα. Αυτό σημαίνει ότι ο χρόνος που δαπανήθηκε για το σχεδιασμό του έργου και την προετοιμασία για να ξεκινήσει θα μπορούσε να είναι εντελώς μάταιος.</p>
+<p>Με τη μάθηση προγραμματισμού, συχνά μπορείτε να παρακάμψετε ολόκληρη αυτή τη διαδικασία δοκιμάζοντας την ιδέα σας εντός μερικών ημερών ή εβδομάδων. Αυτό σημαίνει ότι θα είστε σε θέση να ελέγξετε την εγκυρότητα της ιδέας και δυνητικά ακόμη και να δημιουργήσετε ένα <strong>ελάχιστα βιώσιμο προϊόν (MVP)</strong> που μπορεί να χρησιμοποιηθεί για να βοηθήσει στην απόκτηση χρηματοδότησης. Ένα MVP είναι ένα λειτουργικό υποσύνολο ενός έργου για να αποδείξει την εγκυρότητά του. Για ένα έργο ψηφιακών ανθρωπιστικών σπουδών, αυτό μπορεί να σημαίνει μια απλή εφαρμογή προσκηνίου ή ένα υποσύνολο των δεδομένων που προετοιμάστηκε με έναν συγκεκριμένο τρόπο. Τα MVP είναι αρκετά κοινά σήμερα σε μέρη όπως το Silicon Valley, όπου χρησιμοποιούνται MVP για να παρουσιάσουν μια ιδέα σε επενδυτές. Αυτό βοηθά να δώσει μια πραγματική αίσθηση του τρόπου λειτουργίας του έργου. Ενώ δεν θα είναι διαθέσιμη όλη η μηχανική σε ένα MVP, είναι μια καλή απόδειξη ιδέας. Αποδεικνύει επίσης ότι το έργο είναι δυνατό, η ομάδα μπορεί να κάνει τη δουλειά που υπόσχεται και ότι η ομάδα έχει ήδη μια καλή κατανόηση των δυνητικών ζητημάτων που ενδέχεται να προκύψουν. Αυτά είναι όλα τα πράγματα που αγαπούν οι φορείς χρηματοδότησης. Σε όλο το εγχειρίδιο αυτό, θα αναπτύξετε τις δεξιότητες που απαιτούνται για να δημιουργήσετε ένα MVP που μπορείτε να παρουσιάσετε σε έναν φορέα χρηματοδότησης. Αυτό ισχύει ιδιαίτερα στο τελευταίο κεφάλαιο, όπου μαθαίνουμε πώς να δημιουργούμε εφαρμογές Python που βασίζονται στο νέφος με το Streamlit.</p>
+</section>
+<section id="id2">
+<h3><span class="section-number">1.1.1.2. </span>Ο Αυτάρκης Ερευνητής των Ψηφιακών Ανθρωπιστικών Επιστημών<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Σε τελική ανάλυση, η δυνατότητα προγραμματισμού μετατρέπει τον ερευνητή των ανθρωπιστικών επιστημών σε έναν απόλυτα αυτάρκη επιστήμονα. Με τη μάθηση προγραμματισμού, μπορείτε να κάνετε πολλά περισσότερα από ό,τι δοκιμή ιδεών και δημιουργία MVP. Μπορείτε να μειώσετε σημαντικά το κόστος ενός έργου ψηφιακών ανθρωπιστικών σπουδών. Ως ειδικός στο πεδίο σας, γνωρίζετε το πεδίο σας καλά. Ως κωδικοποιητής, θα γνωρίζετε τι είναι τεχνικά δυνατό. Εάν καταλήξετε να κερδίσετε ειδίκευση στην επιστήμη δεδομένων ή τη μηχανική μάθηση (κάτι που είναι αρκετά ρεαλιστικό σήμερα καθώς και τα δύο πεδία είναι πιο προσιτά από ποτέ), μπορείτε να αξιοποιήσετε ορισμένες από τις πιο ισχυρές μεθόδους σε τεχνικά πεδία σε ένα πλαίσιο ψηφιακών ανθρωπιστικών σπουδών. Μπορείτε επίσης να εξαλείψετε πολλά προβλήματα που ενδέχεται να προκύψουν κατά τη διάρκεια ενός έργου ψηφιακών ανθρωπιστικών σπουδών.</p>
+<p>Ένα πρόβλημα είναι η επικοινωνία. Ο κύριος ερευνητής του έργου πρέπει να έχει τη δυνατότητα να μεταφέρει τις ιδέες του στον τεχνικό ηγέτη. Αυτή η επικοινωνία συχνά γίνεται σε μια υβριδική γλώσσα που αλλάζει από ομάδα σε ομάδα. Ο PI με την πάροδο του χρόνου μπορεί να αρχίσει να χρησιμοποιεί τεχνικούς όρους και ο τεχνικός ηγέτης θα αρχίσει να χρησιμοποιεί ορισμένους όρους συγκεκριμένους του πεδίου. Αυτή η σχέση και η επικοινωνία χρειάζονται χρόνο για να δημιουργηθούν. Με την απόκτηση ισχυρής κυριαρχίας των τεχνικών πτυχών ενός έργου, ο PI μπορεί είτε να εξαλείψει τη χρειάζεται για έναν τεχνικό ηγέτη είτε να μεταφέρει τις ιδέες του στην τεχνική πλευρά του έργου σε τεχνική γλώσσα.</p>
+<p>Ένα άλλο πρόβλημα που εξαφανίζεται είναι ο χρόνος υστέρησης από ιδέα έως εκτέλεση. Μόλις ξεκινήσει ένα χρηματοδοτούμενο έργο, ο PI θα καθοδηγήσει την όραση και θα μεταφέρει κάθε βήμα στον τεχνικό ηγέτη του οποίου η δουλειά είναι να κάνει την όραση πραγματικότητα. Υπάρχει μια υστέρηση που υπάρχει εδώ. Συχνά, συσκέψεις σε ψηφιακά έργα συμβαίνουν σε τακτική βάση, μερικές φορές εβδομαδιαία ή δεκαπενθήμερη. Κατά τη διάρκεια αυτού του χρόνου, ζητήματα ενδέχεται να προκύψουν που τοποθετούνται στο πλάι έως την επόμενη σύσκεψη. Αυτό μπορεί να καθυστερήσει ένα ψηφιακό έργο. Εάν, ωστόσο, ο ερευνητής είναι αυτάρκης, μπορεί να αναπτύξει την ιδέα του ανεξάρτητα από έναν τεχνικό ηγέτη. Αυτό σημαίνει ότι όταν προκύψει ένα πρόβλημα, ο PI μπορεί να το διορθώσει αμέσως και να μεταφέρει τη λύση στον τεχνικό ηγέτη.</p>
+<p>Τρίτον, οι τεχνικοί ηγέτες σε έργα συνήθως απορροφούν πολλά κεφάλαια. Η πρόσληψη ενός προγραμματιστή μπορεί να είναι δαπανηρή, αλλά εάν το έργο σας απαιτεί επιστήμη δεδομένων και μηχανική μάθηση, ειδικοί σε αυτούς τους τομείς μπορεί να κοστίσουν εκατοντάδες δολάρια την ώρα. Εάν ο PI έχει τεχνική ειδίκευση, μπορεί να εκτελέσει τεχνικές πτυχές ενός έργου έως ότου λάβει αρκετά χρήματα για να προσλάβει έναν τεχνικό ηγέτη.</p>
+</section>
+<section id="id3">
+<h3><span class="section-number">1.1.1.3. </span>Άλλα Οφέλη<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Η μάθηση προγραμματισμού δίνει στον ερευνητή των ανθρωπιστικών επιστημών εργαλεία πέρα από τη δυνατότητα μόνο προγραμματισμού. Αλλάζει θεμελιωδώς τον τρόπο που ο ερευνητής βλέπει το πεδίο του και τα ερωτήματα που μπορεί να εξερευνήσει. Πράγματα που φαίνονταν αδύνατα πριν, θα φαίνονται ξαφνικά αρκετά απλά να λυθούν.</p>
+<p>Ένα από τα μεγαλύτερα πλεονεκτήματα της μάθησης προγραμματισμού είναι η <strong>αυτοματοποίηση</strong>, ή η διαδικασία με την οποία γράφουμε κανόνες για ένα υπολογιστικό σύστημα να εκτελέσει μια επαναλαμβανόμενη εργασία. Ως ερευνητές των ανθρωπιστικών επιστημών, κάνουμε πολλά πράγματα επαναληπτικά. Πολλές από τις εργασίες που πρέπει να εκτελέσουμε είναι επαναλαμβανόμενες και εμείς, ως άνθρωποι, είμαστε επιρρεπείς στο να κάνουμε λάθη. Η ικανότητα αυτοματοποίησης αυτών των εργασιών μπορεί να μειώσει δραστικά τον χρόνο που ξοδεύουμε στην εκτέλεση επαναλαμβανόμενων εργασιών, από ώρες, εβδομάδες ή ακόμη και χρόνια, σε δευτερόλεπτα, λεπτά ή ώρες. Φανταστείτε ότι πρέπει να λάβετε δεδομένα από ένα αρχείο ιστοσελίδας. Φανταστείτε ότι οι πληροφορίες που χρειάζεστε βρίσκονται σε 2.000 διαφορετικές σελίδες. Πόσο χρόνο θα χρειαστεί να πάτε σε κάθε μία από αυτές τις σελίδες και να αντιγράψετε και να επικολλήσετε το κείμενο σε ένα έγγραφο Word; Στην Python, η εργασία μπορεί να κωδικοποιηθεί σε λεπτά και να αφεθεί να εκτελεστεί για μια ώρα. Αυτό σας επιτρέπει, ως ερευνητή, να πάτε και να κάνετε κάποια άλλη πιο απαραίτητη εργασία· ή, ίσως, να απολαύσετε ένα ωραίο τσάι σε μια αιώρα ώστε όταν επιστρέψετε για να αναλύσετε τα έγγραφα, θα είστε ανακεφαλαιωμένοι.</p>
+<p>Ο προγραμματισμός δεν μας επιτρέπει απλώς να αυτοματοποιούμε εργασίες όπως αυτή. Μας επιτρέπει επίσης να καθαρίζουμε συστηματικά δεδομένα. Φανταστείτε ότι θέλατε να αναζητήσετε σε διαθέσιμες σαρώσεις PDF μεσαιωνικής λατινικής. Αυτό το πρόβλημα παρουσιάζει πολλά βασικά ζητήματα που καθιστούν μια τέτοια εργασία αδύνατη ή αναξιόπιστη. Πρώτον, η μεσαιωνική λατινική δεν είχε καμία σταθερή σύμβαση ορθογραφίας. Αυτό σημαίνει ότι ορισμένες σαρώσεις ενδέχεται να έχουν διαφορετικές ορθογραφίες λέξεων. Δεύτερον, τα λατινικά είναι μια ιδιαίτερα κλιτή γλώσσα, που σημαίνει ότι η σειρά των λέξεων δεν είναι σημαντική, παρά η λήξη μιας δεδομένης λέξης. Όταν συνδυάζεται με διαφορετικές ορθογραφίες, αυτό σημαίνει ότι κάθε λέξη μπορεί να αναπαρασταθεί μερικές φορές εκατοντάδες διαφορετικούς τρόπους. Επιπλέον, τα κείμενά σας είναι σαρώσεις. Είναι ακόμη και αυτές οι σαρώσεις αναζητήσιμες; Αν είναι, ήταν το OCR, ή Οπτική Αναγνώριση Χαρακτήρων, ακριβές; Εάν έγινε πριν από το 2015, πιθανότατα δεν είναι. Εάν μετά, τότε οι σαρώσεις μπορεί να είναι σε τόσο κακή κατάσταση που το OCR δεν είναι ακριβές. Επιπλέον, οποιοδήποτε σύστημα OCR θα διατηρήσει αλλαγές γραμμής, που σημαίνει ότι εάν η λέξη-κλειδί που θέλετε να αναζητήσετε είναι χωρισμένη επειδή η λέξη χωρίζεται μεταξύ δύο γραμμών, πρέπει να λάβετε αυτό υπόψη στην αναζήτησή σας. Στη συνέχεια, πρέπει να λάβουμε υπόψη τις σημειώσεις του επεξεργαστή, οι οποίες συχνά σημειώνονται σε αγκύλες, παρενθέσεις και άλλα σύμβολα. Ενώ αυτό το παράδειγμα είναι σίγουρα ένα περίπλοκο, είναι απόλυτα κοινό. Και ενώ χρησιμοποιώ λατινικά για να δείξω ένα μεγαλύτερο ζήτημα με κλιτές γλώσσες, αυτά τα ίδια προβλήματα, ειδικά αυτά γύρω από το OCR, προκύπτουν και με αγγλικά κείμενα. Ο προγραμματισμός μας επιτρέπει να αντιμετωπίσουμε καθένα και καθένα από αυτά τα ζητήματα, κάποια πιο εύκολα από ότι άλλα.</p>
+<p>Το ζήτημα της αναζήτησης περιπλέκεται περαιτέρω όταν αυτό πρέπει να γίνει για πολλά έγγραφα ταυτόχρονα. Φανταστείτε εάν αυτά τα ζητήματα προκύψουν σε 5.000 διαφορετικά αρχεία PDF που πρέπει να αναλύσετε. Θα μπορούσατε ρεαλιστικά να εκτελέσετε όλες αυτές τις αναζητήσεις σε 5.000 έγγραφα; Αν θα μπορούσατε, θα ήταν τα αποτελέσματά σας καλά; Για να απαντήσουμε στο πρώτο, ναι, εάν είστε πρόθυμοι να ξοδέψετε μήνες να το κάνετε· για να απαντήσουμε στο δεύτερο, πιθανότατα όχι. Ο προγραμματισμός σας επιτρέπει να αναπτύξετε προγράμματα που εκτελούν όλες αυτές τις εργασίες σε όλα τα 5.000 έγγραφα. Όταν εκτελέσετε μια αναζήτηση, δεν θα απλώς πατήσετε ctrl+f. Θα κωδικοποιήσετε τη δική σας μέθοδο αναζήτησης ώστε η απλή αναζήτησή σας να μπορεί να επιστρέψει πολύ περίπλοκα αποτελέσματα που σχετίζονται με τη διακύμανση στο κείμενο.</p>
+<p>Η Python κάνει όλα αυτά δυνατά.</p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.1.2. </span>Τι είναι η Python;<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Η Python είναι μια γλώσσα προγραμματισμού. Οι γλώσσες προγραμματισμού είναι τρόποι που εμείς, ως άνθρωποι, μπορούμε να γράψουμε εντολές που στη συνέχεια θα εκτελεστούν από έναν υπολογιστή. Υπάρχουν πολλές διαφορετικές γλώσσες προγραμματισμού διαθέσιμες για ερευνητές να επιλέξουν από:</p>
+<ol class="arabic simple">
+<li><p>C</p></li>
+<li><p>Python</p></li>
+<li><p>JavaScript</p></li>
+<li><p>R</p></li>
+<li><p>HTML (αυτό είναι αμφιλεγόμενο)</p></li>
+</ol>
+<p>Όλες οι γλώσσες προγραμματισμού δεν δημιουργούνται ίσες. Κάποιες είναι καλύτερα χρησιμοποιημένες για την ανάπτυξη λογισμικού, όπως η C· άλλες είναι καταλληλότερες για ανάπτυξη ιστοσελίδων, όπως τα HTML και JavaScript. Και άλλες είναι χαρακτηριστικά σε στατιστική ανάλυση, όπως η R (και η Python). Που αριστεύει η Python; Η Python αριστεύει σε πολλές περιοχές. Ένα πράγμα που τη ξεχωρίζει από άλλες γλώσσες προγραμματισμού για νέους κωδικοποιητές είναι ότι είναι εύκολη στη χρήση και εύκολη στη γραφή.</p>
+<p>Είναι σχετικά εύκολη να γράψει σε σχέση με άλλες γλώσσες προγραμματισμού επειδή η σύνταξη, ή ο τρόπος με τον οποίο γράφετε εντολές στον κώδικα, είναι ευθύς. Είναι εύκολη στη ανάγνωση επειδή η Python χρησιμοποιεί αναγκαστική εσοχή. Αυτό σημαίνει ότι τα μπλοκ κώδικα που μπορούν να είναι δύσκολο να διαβαστούν σε άλλες γλώσσες προγραμματισμού, εντοπίζονται εύκολα στην Python.</p>
+<p>Από τη δημιουργία της στις αρχές της δεκαετίας του 1990, η Python έχει αυξηθεί σημαντικά στη δημοτικότητα, η οποία, με τη σειρά της, έχει οδηγήσει σε μια μεγάλη κοινότητα προγραμματιστών και ένα μεγάλο αριθμό βιβλιοθηκών που διατίθενται. Θα μάθουμε για τις βιβλιοθήκες αργότερα σε αυτό το εγχειρίδιο. Προς το παρόν, σκεφτείτε τις βιβλιοθήκες ως μεγάλες ποσότητες κώδικα που έχουν ήδη γραφτεί ώστε να μπορείτε να γράψετε μία γραμμή κώδικα για να εκτελέσετε μια περίπλοκη εργασία που μπορεί να χρειαστεί εκατοντάδες ή χιλιάδες γραμμές κώδικα για να γραφεί.</p>
+<p>Σήμερα, η Python είναι μια από τις πιο ευρέως χρησιμοποιούμενες γλώσσες προγραμματισμού και θεωρείται η απαραίτητη γλώσσα για ανάλυση κειμένου, μηχανική μάθηση, ανάλυση δεδομένων (παράλληλα με το R), διαδίκτυο scraping, και πολλά άλλα.</p>
+<p>Η Python (κατά το χρόνο της συγγραφής) είναι αυτήν τη στιγμή σε έκδοση <code class="docutils literal notranslate"><span class="pre">3.11.0</span></code>. Ας διαχωρίσουμε κάθε έναν από αυτούς τους αριθμούς. Το <code class="docutils literal notranslate"><span class="pre">3</span></code> αναφέρεται στην κύρια γλώσσα Python. Η Python 2 υπάρχει ακόμη (στην πραγματικότητα έρχεται ως προεπιλογή σε όλα τα Mac), αλλά δεν υποστηρίζεται πλέον και σταδιακά αντικαθίσταται από την Python 3. Δεν θα πρέπει να επενδύσετε χρόνο στη μάθηση της Python 2 καθώς χρησιμοποιείται μόνο για υποστήριξη legacy λογισμικού και έχει μεγάλη ποσότητα ζητημάτων ασφαλείας λόγω της καταργημένης κατάστασής της. Είναι σημαντικό να σημειώσουμε αυτό γιατί ορισμένα πράγματα κωδικοποιούνται διαφορετικά μεταξύ των δύο γλωσσών προγραμματισμού. Εάν ψάχνετε βοήθεια σε ένα φόρουμ κωδικοποίησης, όπως το StackOverflow, είναι σημαντικό να γνωρίζετε για αυτές τις διακρίσεις.</p>
+<p>Το <code class="docutils literal notranslate"><span class="pre">11.0</span></code> στο <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3.11.0</span></code>, μας λέει ειδικά ποια έκδοση της Python 3 χρησιμοποιούμε. Ο κώδικας από ορισμένες βιβλιοθήκες δεν είναι συμβατός προς τα πίσω, που σημαίνει ότι ορισμένες βιβλιοθήκες απαιτούν συγκεκριμένη έκδοση της Python, οπότε η κατανόηση αυτής της έννοιας τώρα θα εξοικονομήσει σύγχυση αργότερα. Κάθε φορά που εμφανίζεται μια νέα έκδοση, νέα χαρακτηριστικά είναι διαθέσιμα, οπότε είναι σημαντικό να ενημερώνεστε με τρέχουσες εκδόσεις, αλλά δεν είναι πάντα απαραίτητο.</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.1.3. </span>Γιατί Python;<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Για όλους τους παραπάνω λόγους, ενθαρρύνω τους ερευνητές των ανθρωπιστικών επιστημών να μάθουν την Python ως πρώτη γλώσσα προγραμματισμού τους. Είναι μια από τις ευκολότερες γλώσσες να μάθει κανείς, ευθεία να γράψει, και μπορεί να λύσει τα περισσότερα από τα προγραμματιστικά προβλήματα που ένας ερευνητής ενδέχεται να αντιμετωπίσει. Οι μεγάλες ποσότητες βιβλιοθηκών και οδηγών σημαίνουν ότι υπάρχουν λίγες εργασίες που θα αποδειχθούν αδύνατες να γίνουν.</p>
+<p>Εάν έχετε πειστεί για την Python, τότε συνεχίστε να διαβάζετε αυτό το εγχειρίδιο καθώς μαθαίνουμε πώς να το εγκαταστήσουμε και να το χρησιμοποιήσουμε ως ερευνητές στις ανθρωπιστικές επιστήμες.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_01-01_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Εισαγωγή στην Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_01-03_installing_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Εγκατάσταση της Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1.1. Γιατί Θα Έπρεπε οι Ερευνητές των Ανθρωπιστικών Επιστημών να Μάθουν Προγραμματισμό;</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to">1.1.1.1. To Χρονοδιάγραμμα για την Έναρξη ενός Μεγάλου Έργου Ψηφιακής Ιστορίας</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1.1.2. Ο Αυτάρκης Ερευνητής των Ψηφιακών Ανθρωπιστικών Επιστημών</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1.3. Άλλα Οφέλη</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. Τι είναι η Python;</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.3. Γιατί Python;</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.6. Transformer Models &#8212; Introduction to Python for Humanists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_topic_modeling/04_03_03_embedding_clustering';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.7. Top2Vec in Python" href="04_03_04_top2vec.html" />
+    <link rel="prev" title="1.5. Creating LDA in Python" href="04_02_06_lda.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/chapman-logo.jpg" class="logo__image only-light" alt="Introduction to Python for Humanists - Home"/>
+    <script>document.write(`<img src="../_static/chapman-logo.jpg" class="logo__image only-dark" alt="Introduction to Python for Humanists - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <p align="center">INTRODUCTION TO PYTHON FOR HUMANISTS</p>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PREFACE</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_preface/00_01_preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART ONE: The Basics of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_01-01_intro.html">1. Εισαγωγή στην Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_01-02_introduction_to_python.html">1.1. Εισαγωγή στην Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_01-03_installing_python.html">1.2. Εγκατάσταση της Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_01-04_coding_basics.html">1.3. Βασικά Στοιχεία Προγραμματισμού</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_02-01_intro.html">2. Δεδομένα και Δομές Δεδομένων</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_02-02_data.html">2.1. Εισαγωγή στα Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_02-03_data_structures.html">2.2. Εισαγωγή στις Δομές Δεδομένων</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_03-01_intro.html">3. Βρόχοι και Λογική</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_03-02_loops.html">3.1. Εισαγωγή στους Βρόχους</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_03-03_conditionals.html">3.2. Δηλώσεις Συνθήκης</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_04-01_intro.html">4. Επίσημος Προγραμματισμός: Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_04-02_functions.html">4.1. Συναρτήσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_04-03_classes.html">4.2. Κλάσεις</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_04-04_libraries.html">4.3. Βιβλιοθήκες στην Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_05-01_intro.html">5. Εργασία με Εξωτερικά Δεδομένα</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_05-02_texts.html">5.1. Εργασία με Κειμενικά Δεδομένα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_05-03_json.html">5.2. Εργασία με Δεδομένα JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_05-04_multiple_files.html">5.3. Εργασία με Πολλαπλά Αρχεία</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_intro/01_06-01_intro.html">6. Εργασία με Δεδομένα στο Ιστό</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_06-02_html.html">6.1. Εισαγωγή στην HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_intro/01_06-03_scraping_pages.html">6.2. Scraping Ιστοσελίδων με τις Requests και BeautifulSoup</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART TWO: Data Analysis with Pandas (Work in Progress)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_01_01_intro.html">1. Introduction to Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_02_introduction_to_pandas.html">1.1. Introduction to Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_01_03_the_basics.html">1.2. The Basics of Pandas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_02_01_intro.html">2. Working with Data in Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_02_finding_data.html">2.1. Finding Data in DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_03_organizing_data.html">2.2. Organizing the DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_02_04_cleaning_data.html">2.3. Cleaning the DataFrame</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_03_01_intro.html">3. Searching for Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_02_advanced_strings.html">3.1. Advanced Searching on Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_03_advanced_querying.html">3.2. Filter and Querying</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_03_04_advanced_grouping.html">3.3. Grouping with Groupby()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_pandas/02_04_01_intro.html">4. Advanced Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_02_pandas_and_plots.html">4.1. Plotting Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_03_graphing_networks_with_pandas.html">4.2. Graphing Network Data with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_pandas/02_04_04_time_series_data.html">4.3. Time Series Data</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART THREE: Natural Language Processing with spaCy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_01_01_intro.html">1. Introduction to spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_02_install_and_containers.html">1.1. The Basics of spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_03_linguistic_annotations.html">1.2. Getting Started with spaCy and its Linguistic Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_01_04_pipelines.html">1.3. spaCy’s Pipelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_02_01_intro.html">2. Rules-Based spaCy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_02_entityruler.html">2.1. The EntityRuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_03_matcher.html">2.2. The Matcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_04_phrase_matcher.html">2.3. The PhraseMatcher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_06_simple_regex.html">2.4. Using RegEx with spaCy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_02_07_complex_regex.html">2.5. Working with Multi-Word Token Entities and RegEx in spaCy 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_spacy/03_03_01_intro.html">3. Solving a Domain-Specific Problem: A Case Study with Holocaust NER</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_02_cultivating_concentration_camp_dataset.html">3.1. Cultivating Good Datasets for Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_03_challenges.html">3.2. The Challenges of Holocaust NER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_spacy/03_03_04_building_holocaust_pipeline_rules_based.html">3.3. Creating Rules-Based Pipeline for Holocaust Documents</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FOUR: OTHER APPLICATIONS OF PYTHON </span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="04_01_01_intro.html">1. Topic Modeling in Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04_01_02_topic_modeling_concepts.html">1.1. What is Topic Modeling?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_01_03_clusters.html">1.2. Topics and Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_01_04_bigrams.html">1.3. Bigrams and Trigrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_02_02_lda_concept.html">1.4. LDA Topic Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_02_06_lda.html">1.5. Creating LDA in Python</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.6. Transformer Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_03_04_top2vec.html">1.7. Top2Vec in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08_booknlp/01_01_intro.html">2. Text Analysis with BookNLP</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/01_intro.html">2.1. Introduction to BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/02_starting.html">2.2. Getting Started with BookNLP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/03_files.html">2.3. The Output Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/04_character_analysis.html">2.4. Character Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08_booknlp/05_events.html">2.5. Events Analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_sna/06_01_01_intro.html">3. Social Network Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_02_basics.html">3.1. The Basic Concepts of Social Network Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_03_networkx.html">3.2. Introduction to NetworkX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_04_pyvis_basics.html">3.3. Producing Dynamic Graphs with PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_05_networkx_pyvis.html">3.4. NetworkX and PyVis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_06_node_color.html">3.5. Adding Color to Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_07_applied.html">3.6. SNA on Humanities Data: Structuring the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_sna/06_01_08_applied2.html">3.7. SNA on Humanities Data: Creating the Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">PART FIVE: DESIGNING AN APPLICATION WITH STREAMLIT</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_01_01_intro.html">1. Introduction to Streamlit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_02_streamlit.html">1.1. Creating Our First App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_03_displaying_data.html">1.2. Displaying Data in Streamlit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_01_04_input_widgets.html">1.3. Streamlit Input Widgets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_02_01_intro.html">2. Advanced Streamlit Features</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_02_charts.html">2.1. Data Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_03_layout_design.html">2.2. Layout Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_04_cache.html">2.3. Streamlit Cache and Session States</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_05_custom_html.html">2.5. Custom HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_02_06_multiple_pages.html">2.6. Multi-Page Applications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_streamlit/05_03_01_intro.html">3. Building a Database Query Application</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_02_database_query_app.html">3.1. Building a Database Query Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_streamlit/05_03_03_cloud.html">3.2. Deploying an App in the Cloud with Streamlit Share</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/wjbmattingly/python_for_dh/blob/main/04_topic_modeling/04_03_03_embedding_clustering.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/edit/main/04_topic_modeling/04_03_03_embedding_clustering.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/wjbmattingly/python_for_dh/issues/new?title=Issue%20on%20page%20%2F04_topic_modeling/04_03_03_embedding_clustering.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/04_topic_modeling/04_03_03_embedding_clustering.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Transformer Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-gathering-data">1.6.1. Importing Libraries and Gathering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-the-documents">1.6.2. Embedding the Documents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flattening-the-data">1.6.3. Flattening the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isolating-clusters-with-hdbscan">1.6.4. Isolating Clusters with HDBScan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-labels">1.6.5. Analyzing the Labels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-noise">1.6.6. Outliers (Noise)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="transformer-models">
+<h1><span class="section-number">1.6. </span>Transformer Models<a class="headerlink" href="#transformer-models" title="Link to this heading">#</a></h1>
+<p>Transformer models language models are robust machine learning models that are capable of solving many complex problems. It is beyond the scope of this textbook to explain the architecture of transformers or how they work precisely. Nevertheless, it is important to understand a few things. First, transformer models are particularly suited for working with multi-lingual documents. Second, they are powerful, but slow. Third, the way they represent texts is different from other language models in that they are able to change the vector, or numerical representation, of an individual word based on context.</p>
+<p>This makes them particularly suited to the problem of topic modeling because they can convert each document into a numerical representation that is not a sequence of numbers that correspond to the presence of an individual word. Instead, transformer models can convert a document into a deeply semantic representation that retains the context and syntax.</p>
+<p>In order to leverage transformer models, we need to install SentenceTransformers (from HuggingFace). We can do that with pip via the command below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sentence_transformers</span>
+</pre></div>
+</div>
+<p>In this section, we will also be working with two other libraries: umap (for representing our complex numerical representation of documents in 2-dimensional space) and hdbscan (for finding clusters). UMAP has gained popularity in recent years as a quick, effectively, and fairly accurate way to represent higher dimensional data in lower dimensions. In Python, we can access the UMAP algorithm through the UMAP library which can be installed with pip by typing the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">umap</span><span class="o">-</span><span class="n">learn</span>
+</pre></div>
+</div>
+<p>Note the <code class="docutils literal notranslate"><span class="pre">-learn</span></code> after <code class="docutils literal notranslate"><span class="pre">umap</span></code>. This is very important as <code class="docutils literal notranslate"><span class="pre">umap</span></code> is an entirely different library.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">hdbscan</span>
+</pre></div>
+</div>
+<p>Now that our libraries are installed, we can begin importing them.</p>
+<section id="importing-libraries-and-gathering-data">
+<h2><span class="section-number">1.6.1. </span>Importing Libraries and Gathering Data<a class="headerlink" href="#importing-libraries-and-gathering-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sentence_transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SentenceTransformer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">umap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hdbscan</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/wjbmattingly/anaconda3/envs/python-textbook/lib/python3.9/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we begin leveraging advanced transformer-based topic modeling libraries, like Top2Vec, we should have a good understanding about how they work. Top2Vec leverages three libraries: Sentence Transformers, UMAP, and HDBScan. Here, we will explore each of these so that the reader will have a basic understanding of the theory and methods behind Top2Vec</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/trc.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Last&quot;</span><span class="p">,</span> <span class="s2">&quot;First&quot;</span><span class="p">,</span> <span class="s2">&quot;Description&quot;</span><span class="p">]]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Last</th>
+      <th>First</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AARON</td>
+      <td>Thabo Simon</td>
+      <td>An ANCYL member who was shot and severely inju...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">documents</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Description</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="embedding-the-documents">
+<h2><span class="section-number">1.6.2. </span>Embedding the Documents<a class="headerlink" href="#embedding-the-documents" title="Link to this heading">#</a></h2>
+<p>The first step in using transformers in topic modeling is to convert the text into a vector. We met vectors when we explored LDA topic modeling in the previous chapter. Arrays for LDA topic modeling were rooted in a bag-of-word (BOW) index. This index, while computationally light, did not retain semantic meaning or word order.</p>
+<p>When we are working with transformers, we can create a vector for each document in our dataset. This vector is not an index of the words used, rather it is an embedding for the entire document that contains its semantic usages of words. It also preserves in this same vector space the word order to a degree. This document vector is similar to the word vector that we met in Part Three of this textbook. Instead of embedding a single word, however, the entire document receives an embedding. This allows us to mathematically compare documents across an entire corpus.</p>
+<p>To convert our documents into vectors, we first need a transformer model. Fortunately, the Sentence Transformer library from HuggingFace allows us to easily load robust pre-trained language models. In our case, we will be using the <code class="docutils literal notranslate"><span class="pre">all-MiniLM-L6-v2</span></code> model. We can load this model by calling the Sentence Transformer class from the sentence_transformers library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;all-MiniLM-L6-v2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once our model class is created, we can use the <code class="docutils literal notranslate"><span class="pre">.encode()</span></code> method. This method will encode all the documents that we pass to it. In our case, this is the approximately 22,000 descriptions from the TRC dataset. The <code class="docutils literal notranslate"><span class="pre">.encode()</span></code> method takes a single mandatory argument, a list of data to embed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc_embeddings</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have the vectors for each document, let’s examine one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc_embeddings</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.07123438,  0.00332599, -0.05571468,  0.08363082,  0.09066874,
+        0.05503598,  0.08029197,  0.01370712,  0.05912026,  0.06226278],
+      dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, this looks remarkably similar to our word embeddings. While this is useful for examining mathematically comparing the similarity between documents, it can be difficult to parse this numerical data visually. For this reason, it is useful to flatten the data into 2 or 3 dimensions. This allows the data to be graphed. In the previous chapter, we learned how to flatten data with PCA. In this chapter, we will meet a new dimensionality reduction algorithm, UMAP.</p>
+</section>
+<section id="flattening-the-data">
+<h2><span class="section-number">1.6.3. </span>Flattening the Data<a class="headerlink" href="#flattening-the-data" title="Link to this heading">#</a></h2>
+<p>Once you have installed UMAP correctly, you can access the <code class="docutils literal notranslate"><span class="pre">UMAP</span></code> class. This will take several parameters that can be adjusted to yield different results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umap_proj</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">UMAP</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                          <span class="n">min_dist</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                          <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;correlation&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">doc_embeddings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="isolating-clusters-with-hdbscan">
+<h2><span class="section-number">1.6.4. </span>Isolating Clusters with HDBScan<a class="headerlink" href="#isolating-clusters-with-hdbscan" title="Link to this heading">#</a></h2>
+<p>Once our data has been flattened, we can automatically identify the number of clusters within it and assign documents to each cluster with the HDBScan algorithm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdbscan_labels</span> <span class="o">=</span> <span class="n">hdbscan</span><span class="o">.</span><span class="n">HDBSCAN</span><span class="p">(</span><span class="n">min_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_cluster_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">umap_proj</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">hdbscan_labels</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2317
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_proj</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_proj</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;topic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hdbscan_labels</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Last</th>
+      <th>First</th>
+      <th>Description</th>
+      <th>x</th>
+      <th>y</th>
+      <th>topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AARON</td>
+      <td>Thabo Simon</td>
+      <td>An ANCYL member who was shot and severely inju...</td>
+      <td>7.330942</td>
+      <td>-0.935302</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="analyzing-the-labels">
+<h2><span class="section-number">1.6.5. </span>Analyzing the Labels<a class="headerlink" href="#analyzing-the-labels" title="Link to this heading">#</a></h2>
+<p>Now that we have the labels loaded into our DataFrame, we can use Pandas to interrogate that data. Let’s grab a topic and examine it. Here, we will examine topic 100.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">topic</span> <span class="o">==</span> <span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">Description</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041).
+
+An ANC supporter who was shot dead on 6 April 1990 when a group of Inkatha supporters attacked UDF supporters and residents at Mpumalanga, KwaZulu, near Durban, in spite of a heavy police and military presence. Fourteen people were killed and at least one hundred and twenty homes were burnt down. One former IFP member was granted amnesty (AC/1999/0332).
+
+An ANC supporter who was shot and killed when a group of Inkatha supporters and Caprivi trainees attacked a UDF meeting in a house at Mpumalanga, KwaZulu, near Durban, on 18 January 1988. Nine people were killed and an estimated two hundred people were injured in the attack. The group went on to destroy around eight houses. One former Inkatha member was granted amnesty (AC/1999/0332).
+
+An ANC supporter who was shot and killed when a group of Inkatha supporters and Caprivi trainees attacked a UDF meeting in a house at Mpumalanga, KwaZulu, near Durban, on 18 January 1988. Nine people were killed and an estimated two hundred people were injured in the attack. The group went on to destroy around eight houses. One former Inkatha member was granted amnesty (AC/1999/0332).
+
+An ANC supporter who was shot dead on 18 January 1988 when a group of Inkatha supporters, including some Caprivi trainees, opened fire on a UDF meeting in a house at Mpumalanga, KwaZulu, near Durban. Nine people were killed and an estimated two hundred people were injured. The group went on to destroy about eight houses. Amnesty applications were received for this incident.
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041).
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041).
+
+Was abducted, interrogated and stabbed to death by UDF and ANC supporters at Mpumalanga, Natal, in July 1989. He was believed to be an Inkatha member. One UDF and ANC supporter was granted amnesty (AC/200/011).
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041).
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041).
+
+An Inkatha supporter who was stabbed and severely injured by named ANC supporters in Mtwalume, near Umzinto, Natal, in political conflict in the area on 4 February 1990 following the unbanning of political organisations two days earlier. Two UDF supporters were granted amnesty for the attack (AC/2000/041).
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041). 
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041). 
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041). 
+
+Was one of thirteen people killed in an attack by UDF and ANC supporters on Inkatha supporters in the Mahwaqa area, near Port Shepstone, Natal, on 24 March 1990. Two UDF supporters were granted amnesty (AC/2000/041). 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that these results for <code class="docutils literal notranslate"><span class="pre">Topic</span> <span class="pre">100</span></code> all clearly have overlapping similarity. In some cases, these are identical, in others they are quite similar.  Nevertheless, we have one major limitation to this approach, outliers or noise. Let’s examine <code class="docutils literal notranslate"><span class="pre">Topic</span> <span class="pre">-1</span></code>.</p>
+</section>
+<section id="outliers-noise">
+<h2><span class="section-number">1.6.6. </span>Outliers (Noise)<a class="headerlink" href="#outliers-noise" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">topic</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Last</th>
+      <th>First</th>
+      <th>Description</th>
+      <th>x</th>
+      <th>y</th>
+      <th>topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AARON</td>
+      <td>Thabo Simon</td>
+      <td>An ANCYL member who was shot and severely inju...</td>
+      <td>7.330942</td>
+      <td>-0.935302</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ABRAHAMS</td>
+      <td>Moegsien</td>
+      <td>Was stabbed and stoned to death by a group of ...</td>
+      <td>5.861767</td>
+      <td>10.907988</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ADAMS</td>
+      <td>Zwelinzima Sidwell</td>
+      <td>Was severely beaten and shot in the leg in Gug...</td>
+      <td>5.548826</td>
+      <td>9.517207</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>AGGETT</td>
+      <td>Neil Hudson</td>
+      <td>Died in detention at John Vorster Square, Joha...</td>
+      <td>11.213459</td>
+      <td>8.340458</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>ALBERT</td>
+      <td>Nombuyiselo Francis</td>
+      <td>Was beaten and stabbed to death on 10 December...</td>
+      <td>6.867918</td>
+      <td>2.346848</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20804</th>
+      <td>XULU</td>
+      <td>Josephina</td>
+      <td>An IFP supporter who had three rondavels burnt...</td>
+      <td>2.483765</td>
+      <td>3.955176</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>20810</th>
+      <td>XULU</td>
+      <td>Mzomonje Phineas</td>
+      <td>Was stabbed to death in Inchanga, Natal, on 15...</td>
+      <td>5.103362</td>
+      <td>11.622403</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>20820</th>
+      <td>XULU</td>
+      <td>Sipho Aubrey</td>
+      <td>An ANC supporter who was shot and fatally woun...</td>
+      <td>7.560771</td>
+      <td>0.817540</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>20821</th>
+      <td>XULU</td>
+      <td>Sipho Brigitte</td>
+      <td>An MK operative who was executed in Pretoria C...</td>
+      <td>3.011799</td>
+      <td>-0.359574</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>20830</th>
+      <td>YAKA</td>
+      <td>Mbangomuni</td>
+      <td>An IFP supporter and acting induna who was sho...</td>
+      <td>8.195865</td>
+      <td>2.783923</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+<p>4579 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>We have 4,579 outliers, or documents that do not neatly cluster into any one category. This is a clear limitation of this approach. What do we do with these outliers? One option is to assign them to the nearest topic. The process of doing this, however, can be quite complex as the we calculate distance between a document vector and a topic can vary depending on which measurements we wish to use. In the final section of this chapter, we will examine a library that handles this problem for us.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./04_topic_modeling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_02_06_lda.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.5. </span>Creating LDA in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_03_04_top2vec.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.7. </span>Top2Vec in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-gathering-data">1.6.1. Importing Libraries and Gathering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embedding-the-documents">1.6.2. Embedding the Documents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flattening-the-data">1.6.3. Flattening the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isolating-clusters-with-hdbscan">1.6.4. Isolating Clusters with HDBScan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-labels">1.6.5. Analyzing the Labels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-noise">1.6.6. Outliers (Noise)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William J.B. Mattingly
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
