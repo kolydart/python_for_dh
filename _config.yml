@@ -1,7 +1,7 @@
 # Book settings
 title: Introduction to Python for Humanists
-author: William J.B. Mattingly
-logo: 'images/chapman-logo.jpg'
+author: William J.B. Mattingly, Tassos Kolydas (translation)
+# logo: 'images/chapman-logo.jpg'
 execute:
   execute_notebooks: 'off'
 parse:
@@ -11,6 +11,7 @@ exclude_patterns:
   - .git
   - .github
   - .ipynb_checkpoints
+  - .cursor
   - _build
   - .DS_Store
   - '**.ipynb_checkpoints'
@@ -19,14 +20,26 @@ exclude_patterns:
   - CLAUDE.md
   - TRANSLATION_PLAN.md
   - README.md
+  - 02_pandas
+  - 03_spacy
+  - 04_topic_modeling
+  - 05_streamlit
+  - 06_sna
+  - 08_booknlp
+  - 09_conclusion
+  - other
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/wjbmattingly/python_for_dh # Online location of your book
+  url: https://github.com/kolydart/python_for_dh # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links (optional)
 html:
-  use_edit_page_button: true
-  use_issues_button: true
-  use_repository_button: true
+  use_edit_page_button: false
+  use_issues_button: false
+  use_repository_button: false
   use_multitoc_numbering: false
+  copyright: ""  # Empty string removes the copyright notice
+sphinx:
+  config:
+    html_show_copyright: false
 launch_buttons:
   colab_url: "https://colab.research.google.com"
