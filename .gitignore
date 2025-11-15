@@ -1,4 +1,2 @@
-_build/html
-_build/jupyter_execute
-_build/.doctrees/environment.pickle
+_build/
 *.doctree
