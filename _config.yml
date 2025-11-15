@@ -5,7 +5,14 @@ author: William J.B. Mattingly, Tassos Kolydas (translation)
 execute:
   execute_notebooks: 'off'
 parse:
-  myst_extended_syntax: true
+  myst_enable_extensions:
+    - colon_fence
+    - dollarmath
+    - linkify
+    - substitution
+    - tasklist
+  myst_substitutions:
+    iframe_note: "*(Interactive content available in HTML version)*"
 exclude_patterns:
   - venv*
   - .git
@@ -38,8 +45,33 @@ html:
   use_repository_button: false
   use_multitoc_numbering: false
   copyright: ""  # Empty string removes the copyright notice
+  extra_footer: ""
+
 sphinx:
+  extra_extensions:
+    - sphinx.ext.mathjax
   config:
     html_show_copyright: false
+    nb_merge_streams: true
+    html_static_path: ['_static']
+    html_css_files:
+      - custom-pdf.css
+    # Hide raw HTML (iframes, etc.) from LaTeX/PDF output
+    html_context:
+      default_mode: "light"
+    # Remove raw HTML directives from LaTeX output
+    latex_elements:
+      preamble: |
+        % Hide iframe and raw HTML content
+        \usepackage{xparse}
+        \ExplSyntaxOn
+        \NewDocumentEnvironment{sphinxraw}{m}{}{}
+        \ExplSyntaxOff
+
 launch_buttons:
-  colab_url: "https://colab.research.google.com"
+  notebook_interface: "classic"
+  # colab_url: "https://colab.research.google.com"
+
+latex:
+  latex_documents:
+    targetname: book.pdf
