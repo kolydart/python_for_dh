@@ -191,7 +191,7 @@
 <li class="toctree-l2"><a class="reference internal" href="01_03-03_conditionals.html">3.2. Δηλώσεις Συνθήκης</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="01_04-01_intro.html">4. Επίσημος Προγραμματισμός: Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="01_04-01_intro.html">4. Συναρτήσεις, Κλάσεις και Βιβλιοθήκες</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="01_04-02_functions.html">4.1. Συναρτήσεις</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01_04-03_classes.html">4.2. Κλάσεις</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01_04-04_libraries.html">4.3. Βιβλιοθήκες στην Python</a></li>
@@ -388,16 +388,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trinket">1.2.1. Trinket</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">1.2.2. Χρήση του Google Colab</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binder-jupyterbook">1.2.3. Χρήση του Binder από αυτό το JupyterBook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-online">1.2.4. Χρήση Jupyter Notebooks Online</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.5. Εγκατάσταση της Python τοπικά</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-navigator">1.2.5.1. Λήψη του Anaconda Navigator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.5.2. Χρήση του Anaconda Navigator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.2.5.3. Εγκατάσταση του Jupyter-Lab</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.6. Συμπέρασμα</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.2. Εγκατάσταση της Python τοπικά</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.3. Συμπέρασμα</a></li>
 </ul>
             </nav>
         </div>
@@ -411,15 +403,8 @@ document.write(`
                   
   <section id="python">
 <h1><span class="section-number">1.2. </span>Εγκατάσταση της Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
-<p>Το πιο δύσκολο πράγμα για την εργασία με την Python (ή οποιαδήποτε γλώσσα προγραμματισμού) είναι να μάθετε πώς να την εγκαταστήσετε σωστά. Γιατί είναι αυτό τόσο δύσκολο; Επειδή η εγκατάσταση της Python διαφέρει δραματικά ανά λειτουργικό σύστημα και έκδοση λειτουργικού συστήματος. Παρακάτω βλέπετε πέντε διαφορετικούς τρόπους με τους οποίους μπορείτε να ξεκινήσετε προγραμματισμό Python από τον ευκολότερο στον πιο δύσκολο.</p>
-<ol class="arabic simple">
-<li><p>Χρήση των εφαρμογών Trinket που είναι ενσωματωμένες σε όλο αυτό το εγχειρίδιο.</p></li>
-<li><p>Χρήση του Google Colab για κάθε ξεχωριστή ενότητα του εγχειριδίου</p></li>
-<li><p>Χρήση της δωρεάν ενσωματωμένης δυνατότητας Binder αυτού του εγχειριδίου</p></li>
-<li><p>Χρήση ενός δωρεάν σημειωματάριου Jupyter Notebook στο διαδίκτυο</p></li>
-<li><p>Εγκατάσταση της Python τοπικά μέσω του Anaconda Navigator και χρήση του Jupyter-Lab</p></li>
-</ol>
-<p>Εάν είστε εντελώς νέοι στον προγραμματισμό, συνιστώ να αγνοήσετε τις επιλογές 2-4 και απλώς να χρησιμοποιήσετε την επιλογή 1 κατά το πρώτο μέρος αυτού του εγχειριδίου. Στην εμπειρία μου, είναι σημαντικό στις αρχές του προγραμματιστικού ταξιδιού σας να έχετε όσο το δυνατόν λιγότερα εμπόδια. Εάν ενδιαφέρεστε να μπείτε στην Python όσο το δυνατόν γρήγορα, τότε χρησιμοποιήστε τα ελεύθερα διαθέσιμα γραφικά στοιχεία Trinket στην ηλεκτρονική έκδοση αυτού του εγχειριδίου και επιστρέψτε στην εγκατάσταση της Python αργότερα.</p>
+<p>Το πιο δύσκολο πράγμα για την εργασία με την Python (ή οποιαδήποτε γλώσσα προγραμματισμού) είναι να μάθετε πώς να την εγκαταστήσετε σωστά. Γιατί είναι αυτό τόσο δύσκολο; Επειδή η εγκατάσταση της Python διαφέρει δραματικά ανά λειτουργικό σύστημα και έκδοση λειτουργικού συστήματος. Παρακάτω βλέπετε διαφορετικούς τρόπους με τους οποίους μπορείτε να ξεκινήσετε προγραμματισμό Python από τον ευκολότερο στον πιο δύσκολο.
+Εάν είστε εντελώς νέοι στον προγραμματισμό, συνιστώ απλώς να χρησιμοποιήσετε την πρώτη επιλογή. Στην εμπειρία μου, είναι σημαντικό στις αρχές του προγραμματιστικού ταξιδιού σας να έχετε όσο το δυνατόν λιγότερα εμπόδια. Εάν ενδιαφέρεστε να μπείτε στην Python όσο το δυνατόν γρήγορα, τότε χρησιμοποιήστε τα ελεύθερα διαθέσιμα γραφικά στοιχεία Trinket στην ηλεκτρονική έκδοση αυτού του εγχειριδίου και επιστρέψτε στην εγκατάσταση της Python αργότερα.</p>
 <section id="trinket">
 <h2><span class="section-number">1.2.1. </span>Trinket<a class="headerlink" href="#trinket" title="Link to this heading">#</a></h2>
 <p>Σε όλο αυτό το εγχειρίδιο, θα δείτε εφαρμογές <a class="reference external" href="https://trinket.io/">Trinket</a> ενσωματωμένες σε κάθε σελίδα. Το Trinket σας επιτρέπει να εξασκήσετε τις δεξιότητες κωδικοποίησής σας χωρίς να εγκαταστήσετε ποτέ την Python. Εάν είστε νέοι στον προγραμματισμό και θέλετε να ξεκινήσετε αμέσως χωρίς να εγκαταστήσετε την Python, συνιστώ να εργαστείτε με το Trinket μέσα στην ψηφιακή έκδοση αυτού του εγχειριδίου.</p>
@@ -445,151 +430,17 @@ document.write(`
 </div>
 <p>Θα μπορείτε να γράψετε τον κώδικά σας μέσα σε αυτήν την εφαρμογή Trinket και στη συνέχεια να κάνετε κλικ στο κουμπί αναπαραγωγής στο επάνω μέρος. Αυτό θα εκτελέσει τον κώδικά σας και θα συμπληρώσει τα αποτελέσματα στη δεξιά έξοδο.</p>
 </section>
-<section id="google-colab">
-<h2><span class="section-number">1.2.2. </span>Χρήση του Google Colab<a class="headerlink" href="#google-colab" title="Link to this heading">#</a></h2>
-<p>Κατά το πρώτο μέρος του εγχειριδίου, σχεδόν όλος ο κώδικας μπορεί να εκτελεστεί με το Trinket. Ακόμη και η ενότητα για το Pandas μπορεί να γίνει μέσα στο Trinket. Ωστόσο, οι μεταγενέστερες ενότητες θα γίνουν ολοένα δυσκολότερες καθώς απαιτούν βιβλιοθήκες που δεν υποστηρίζονται από το Trinket. Σε αυτό το σημείο, θα θέλετε να εξετάσετε άλλη επιλογή. Πάλι, για να καθυστερήσετε την εγκατάσταση της Python στο μηχάνημά σας, μπορούμε να χρησιμοποιήσουμε άλλες λύσεις βασισμένες στο νέφος.</p>
-<p>Υπάρχουν δύο επιλογές για την εκτέλεση του κώδικα αυτού του εγχειριδίου στο νέφος έξω από το εγχειρίδιο: Google Colab και Binder (αναφέρεται παρακάτω). Στην επάνω δεξιά γωνία κάθε σελίδας υπάρχει ένας πύραυλος. Εάν τοποθετήσετε το ποντίκι σας πάνω από αυτόν τον πύραυλο, θα έχετε δύο επιλογές για να επιλέξετε από, Binder ή Colab. Κάντε κλικ <code class="docutils literal notranslate"><span class="pre">Colab</span></code>.</p>
-<figure class="align-default" id="id4">
-<img alt="../_images/rocket_ship.png" src="../_images/rocket_ship.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Εικόνα Rocket Ship στη γωνία Επάνω δεξιά του σημειωματάριου JupyterBook στο διαδίκτυο.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Μόλις κάνετε κλικ στο κουμπί <code class="docutils literal notranslate"><span class="pre">Colab</span></code> θα μεταφερθείτε στο Google Colab και θα δείτε ένα Notebook μέσα στο σύστημα Google Colab που θα πρέπει να μοιάζει ως εξής:</p>
-<figure class="align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/google_colab.png"><img alt="../_images/google_colab.png" src="../_images/google_colab.png" style="height: 300px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Επίδειξη του Google Colab που άνοιξε</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Όταν είστε εδώ, μπορείτε να εκτελέσετε το notebook.</p>
-<p>Το Colab και το Binder έχουν τα πλεονεκτήματά τους. Το Google Colab θα είναι πολύ πιο γρήγορο, αλλά θα απαιτήσει να εγκαταστήσετε τις απαιτούμενες βιβλιοθήκες για κάθε σελίδα. Για το μεγαλύτερο μέρος του πρώτου μέρους του εγχειριδίου, αυτό δεν θα είναι απαραίτητο καθώς δεν θα δουλεύουμε με βιβλιοθήκες. Θα μάθετε πώς να εγκαθιστάνετε βιβλιοθήκες τοπικά και σε ένα Jupyter Notebook (όπως αυτά που χρησιμοποιούνται στο Google Colab) αργότερα σε αυτό το μέρος του εγχειριδίου. Μόλις εγκατασταθούν οι βιβλιοθήκες, ολόκληρο το notebook μπορεί να εκτελεστεί ως εάν το εκτελούσατε τοπικά. Ένα μειονέκτημα του Google Colab είναι η αδυναμία του να αξιοποιήσει τα δεδομένα που βρίσκονται σε αυτό το εγχειρίδιο. Αυτό σημαίνει ότι σε ορισμένες περιπτώσεις, θα πρέπει να ανεβάσετε ручноύ τα δεδομένα στο Google Colab για να εκτελεστούν ορισμένα notebooks όπως αναμένεται.</p>
-<p>Ένα άλλο όφελος του Google Colab είναι ότι είναι συνδεδεμένο με τον λογαριασμό σας στο Google. Αυτό σημαίνει ότι οποιαδήποτε αλλαγή που κάνετε στο notebook μπορεί να αποθηκευτεί στο Google Drive σας και να χρησιμοποιηθεί αργότερα. Κάθε φορά που ανοίγετε το notebook, ωστόσο, δημιουργείται ένα μοναδικό παράδειγμα Python, γεγονός που σημαίνει ότι θα πρέπει να εγκαταστήσετε ξανά τις βιβλιοθήκες σας. Ευτυχώς, αυτή η διαδικασία είναι αρκετά γρήγορη.</p>
-</section>
-<section id="binder-jupyterbook">
-<h2><span class="section-number">1.2.3. </span>Χρήση του Binder από αυτό το JupyterBook<a class="headerlink" href="#binder-jupyterbook" title="Link to this heading">#</a></h2>
-<p>Μια άλλη λύση βασισμένη στο νέφος είναι με το Binder. Σε αντίθεση με το Google Colab, το Binder θα φορτώσει ένα περιβάλλον για ολόκληρο το εγχειρίδιο και θα εγκαταστήσει όλες τις βιβλιοθήκες χρησιμοποιώντας το αρχείο <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> που βρίσκεται στο αποθετήριο GitHub αυτού του εγχειριδίου. Αυτό σημαίνει ότι το Binder θα χρειαστεί σημαντικά περισσότερο χρόνο για να φορτώσει, αλλά θα περιέχει ολόκληρο το εγχειρίδιο. Θα αποθηκεύσει επίσης το παράδειγμα για μια χρονική περίοδο ώστε εάν επιστρέψετε στον ίδιο σύνδεσμο σε σύντομο χρονικό διάστημα, υπάρχει πιθανότητα να μην χρειαστεί να εγκαταστήσει ξανά όλες τις βιβλιοθήκες. Στην εμπειρία μου, το Binder μπορεί να αντιμετωπίσει ορισμένα προβλήματα που μπορεί να είναι δύσκολο να διαγνωστούν, ιδίως εάν είστε νέοι στον προγραμματισμό. Για αυτόν τον λόγο, θα συνιστούσα το Google Colab έναντι του Binder σε νέους προγραμματιστές.</p>
-<p>Όπως και με το Google Colab, για να ξεκινήσετε, τοποθετήστε το ποντίκι σας πάνω από το εικονίδιο του πυράλου στο επάνω-αριστερό τμήμα της σελίδας.</p>
-<figure class="align-default" id="id6">
-<img alt="../_images/binder_rocket.JPG" src="../_images/binder_rocket.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Επίδειξη του Rocket Ship στη γωνία Επάνω δεξιά</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Ένα κουμπί που λέει binder πρέπει να εμφανιστεί που λέει “Binder”. Κάντε κλικ σε αυτό.</p>
-<figure class="align-default" id="id7">
-<img alt="../_images/binder_button.JPG" src="../_images/binder_button.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">Επιλογή του κουμπιού Binder.</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Σε αυτό το στάδιο, η οθόνη σας θα πρέπει να μοιάζει ως εξής:</p>
-<img alt="../_images/binder_build.JPG" src="../_images/binder_build.JPG" />
-<p>Αν το κάνει, τότε κάθισε και χαλαρώνε. Μπορεί να χρειαστεί λίγα λεπτά καθώς το binder δημιουργεί το περιβάλλον. Μόλις ολοκληρωθεί το Binder, κάντε κλικ στο File στην επάνω αριστερή γωνία της οθόνης και στη συνέχεια επιλέξτε New Notebook.</p>
-<figure class="align-default" id="id8">
-<img alt="../_images/binder_new_notebook.JPG" src="../_images/binder_new_notebook.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">Δημιουργία ενός νέου Notebook στο Binder.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Μετά από αυτό, επιλέξτε Python 3 (ipykernal). Αυτό θα ανοίξει ένα φρέσκο, νέο notebook.</p>
-<figure class="align-default" id="id9">
-<img alt="../_images/binder_new_notebook_click.JPG" src="../_images/binder_new_notebook_click.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">Επιλογή του κερνέλ Python 3 για το νέο Notebook.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Τώρα θα πρέπει να έχετε ένα νέο notebook που μοιάζει ως εξής:</p>
-<figure class="align-default" id="id10">
-<img alt="../_images/binder_new_notebook_page.JPG" src="../_images/binder_new_notebook_page.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">Παράδειγμα μιας νέας σελίδας Notebook.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Και τώρα, μπορείτε να ακολουθήσετε πλήρως αυτό το εγχειρίδιο.</p>
-</section>
-<section id="jupyter-notebooks-online">
-<h2><span class="section-number">1.2.4. </span>Χρήση Jupyter Notebooks Online<a class="headerlink" href="#jupyter-notebooks-online" title="Link to this heading">#</a></h2>
-<p>Εάν θέλετε να είστε λίγο πιο ανεξάρτητοι και να μάθετε πώς να κωδικοποιείτε στην Python στο διαδίκτυο χωρίς το Binder και αυτό το εγχειρίδιο, μπορείτε! Δεν χρειάζεται να κατεβάσετε και να εγκαταστήσετε την Python στον τοπικό σας υπολογιστή. Αντίθετα, μπορείτε να χρησιμοποιήσετε δωρεάν σε σύνδεσμο διαδικτύου compilers που σας επιτρέπουν να ακολουθήσετε σχεδόν ολόκληρο αυτό το εγχειρίδιο χωρίς πρόβλημα.</p>
-<p>Εάν αυτή είναι η άποψή σας αυτήν τη στιγμή, τότε κάντε κλικ στον σύνδεσμο: https://jupyter.org/try</p>
-<p>Μόλις στη σελίδα κάντε κλικ στην εικόνα που λέει Jupyter Notebook</p>
-<figure class="align-default" id="id11">
-<img alt="../_images/jupyter_org.JPG" src="../_images/jupyter_org.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">Δημιουργία ενός Jupyter Notebook Online.</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Μετά από αυτό, θα δείτε μια οθόνη που μοιάζει ως εξής:</p>
-<figure class="align-default" id="id12">
-<img alt="../_images/jupyter_org_binder.JPG" src="../_images/jupyter_org_binder.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.9 </span><span class="caption-text">Binder που δημιουργεί ένα νέο περιβάλλον για το Notebook.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Μετά από λίγα λεπτά, το περιβάλλον θα φορτωθεί και θα πρέπει να δείτε ένα notebook. Κάντε κλικ στο File στην επάνω αριστερή γωνία, New Notebook, και επιλέξτε Python 3.</p>
-<figure class="align-default" id="id13">
-<img alt="../_images/jupyter_org_new.JPG" src="../_images/jupyter_org_new.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.10 </span><span class="caption-text">Δημιουργία ενός νέου Notebook.</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Μόλις φορτωθεί, μπορείτε να ακολουθήσετε αυτό το εγχειρίδιο σε αυτό το νέο notebook.</p>
-<figure class="align-default" id="id14">
-<img alt="../_images/jupyter_org_new_page.JPG" src="../_images/jupyter_org_new_page.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.11 </span><span class="caption-text">Παράδειγμα ενός νέου Notebook.</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
 <section id="id1">
-<h2><span class="section-number">1.2.5. </span>Εγκατάσταση της Python τοπικά<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.2.2. </span>Εγκατάσταση της Python τοπικά<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Εάν επιθυμείτε να εγκαταστήσετε την Python τοπικά και είναι η πρώτη φορά, υπάρχουν πολλά προβλήματα που μπορούν να προκύψουν. Για αυτόν τον λόγο, τώρα συνιστώ σε όλους τους μαθητές να εγκαταστήσουν μέσω του Anaconda Navigator. Προσθέτει επιπλέον βήματα στη διαδικασία εγκατάστασης, αλλά εξαλείφει το δυνατό για λάθη που θα προκύψουν.</p>
 <p>Το Anaconda Navigator είναι μια φιλική προς τον χρήστη διεπαφή που χειρίζεται τη διαδικασία εγκατάστασης για σας. Επιτρέπει επίσης να δημιουργήσετε περιβάλλοντα, τα οποία είναι μικρές περιοχές στον υπολογιστή σας που έχουν μια μοναδική έκδοση της Python και βιβλιοθηκών που είναι εγκατεστημένες. Θα μάθουμε περισσότερα σχετικά με αυτό στο Μέρος 06 όταν εξερευνούμε τις βιβλιοθήκες.</p>
 <p>Σε αυτό το κεφάλαιο, θα σας καθοδηγήσω στα βήματα εγκατάστασης του Anaconda Navigator στο μηχάνημά σας, ανεξάρτητα από το λειτουργικό σύστημα.</p>
 <p>Όταν γράφουμε κώδικα στην Python, το κάνουμε με λίγους διαφορετικούς τρόπους, ανάλογα με τη χρήση αυτού του κώδικα. Επειδή αυτό είναι ένα εγχειρίδιο και ο κώδικας που γράφω είναι για σκοπούς παρουσίασης, χρησιμοποιώ ένα Jupyter Notebook. Άλλες φορές, ενδέχεται να γράψετε ένα πρόγραμμα σε ένα IDE, ή ένα Integrated Development Environment. Ορισμένα από αυτά περιλαμβάνουν PyCharm, Atom, κ.λπ. Σε άλλες περιπτώσεις, θα χρησιμοποιήσετε την Python στο τερματικό για να εκτελέσετε γρήγορες εργασίες σε δεδομένα σε έναν κατάλογο.</p>
 <p>Το Anaconda Navigator αφαιρεί την ανάγκη για σας να μάθετε πώς να το κάνετε όλο αυτό επειδή σας επιτρέπει να εγκαταστήσετε εύκολα το Jupyter-Lab το οποίο λειτουργεί σαν IDE αλλά είναι λίγο πιο συγχωρητικό. Επιπλέον, μπορείτε να καλέσετε περιόδους τερματικού. Ξέρω ότι αυτοί οι όροι δεν έχουν νόημα αυτήν τη στιγμή, αλλά καθώς η κατανόησή σας του προγραμματισμού επεκταθεί, αυτή η παράγραφος θα έχει περισσότερο νόημα. Προς το παρόν, απλώς κατανοήστε ότι το Anaconda Navigator και το Jupyter-Lab (και τα δύο των οποίων εγκαθιστούμε σε αυτό το κεφάλαιο), κάνουν την έναρξη της μάθησης προγραμματισμού πολύ, πολύ απλούστερη.</p>
-<section id="anaconda-navigator">
-<h3><span class="section-number">1.2.5.1. </span>Λήψη του Anaconda Navigator<a class="headerlink" href="#anaconda-navigator" title="Link to this heading">#</a></h3>
-<p>Για να κατεβάσετε το Anaconda Navigator, πηγαίνετε στον σύνδεσμο αυτό: https://www.anaconda.com/. Στη συνέχεια, τοποθετήστε το ποντίκι σας πάνω από τα Προϊόντα και επιλέξτε Ατομική Έκδοση, όπως φαίνεται στην παρακάτω εικόνα.</p>
-<figure class="align-default" id="id15">
-<img alt="../_images/anaconda_navigator1.JPG" src="../_images/anaconda_navigator1.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.12 </span><span class="caption-text">Αρχική σελίδα του Anaconda.</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Τώρα, κάντε κλικ στο κουμπί Download όπως φαίνεται στην παρακάτω εικόνα και περιηγηθείτε στη διαδικασία εγκατάστασης στον υπολογιστή σας. Μόλις ολοκληρωθεί, θα έχετε το Anaconda Navigator εγκατεστημένο.</p>
-<figure class="align-default" id="id16">
-<img alt="../_images/anaconda_navigator2.JPG" src="../_images/anaconda_navigator2.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.13 </span><span class="caption-text">Λήψη Ατομικής Έκδοσης.</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 <section id="id2">
-<h3><span class="section-number">1.2.5.2. </span>Χρήση του Anaconda Navigator<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>Τώρα που έχει εγκατασταθεί το Anaconda Navigator, μπορείτε να το χρησιμοποιήσετε ανοίγοντάς το στον υπολογιστή σας. Όταν πρώτη φορά δείτε το Anaconda Navigator, θα δείτε αρκετές επιλογές στα αριστερά. Στα περιβάλλοντα, θα δείτε μόνο ένα περιβάλλον: base. Μην ανησυχείτε για περιβάλλοντα σε αυτό το πρώιμο στάδιο της καριέρας σας στην Python. Προς το παρόν, θα κάνουμε απλώς κλικ στο κουμπί Αρχική σελίδα στα αριστερά.</p>
-<figure class="align-default" id="id17">
-<img alt="../_images/anaconda_navigator3.JPG" src="../_images/anaconda_navigator3.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.14 </span><span class="caption-text">Η κύρια διεπαφή χρήστη του Anaconda Navigator.</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="jupyter-lab">
-<h3><span class="section-number">1.2.5.3. </span>Εγκατάσταση του Jupyter-Lab<a class="headerlink" href="#jupyter-lab" title="Link to this heading">#</a></h3>
-<p>Για να ξεκινήσετε να χρησιμοποιείτε την Python, υπάρχουν λίγες διαφορετικές επιλογές διαθέσιμες για σας. Θα μπορούσατε να χρησιμοποιήσετε ένα τερματικό και να ακολουθήσετε το εγχειρίδιο, αλλά αυτό μπορεί να είναι αρκετά δύσκολο εάν μόλις ξεκινάτε. Δεδομένου ότι αυτό το εγχειρίδιο σχεδιάστηκε στο JupyterLab, νομίζω ότι έχει περισσότερο νόημα να εγκαταστήσετε αυτό το λογισμικό. Προχωρήστε και κάντε κλικ Εγκατάσταση κάτω από το JupyterLab. Μόλις εγκατασταθεί, θα μπορείτε να το Εκτελέσετε και να ακολουθήσετε το εγχειρίδιο.</p>
-<figure class="align-default" id="id18">
-<img alt="../_images/anaconda_navigator4.JPG" src="../_images/anaconda_navigator4.JPG" />
-<figcaption>
-<p><span class="caption-number">Fig. 1.15 </span><span class="caption-text">Πώς να εγκαταστήσετε το Jupyter Lab.</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="id3">
-<h2><span class="section-number">1.2.6. </span>Συμπέρασμα<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>Εάν σε κάποιο σημείο της διαδικασίας εγκατάστασης νιώσετε απογοήτευση, μην αποθαρρυνθείτε. Δεν είστε μόνοι και δεν είναι μια απλή ή εύκολη διαδικασία. Αυτοί που προγραμματίζουν χρόνια μπορούν να κάνουν αυτά τα βήματα να φαίνονται απλά, αλλά η αντιμετώπιση προβλημάτων μόνοι σας είναι προκλητική. Είναι σημαντικό να θυμάστε ότι ο προγραμματισμός γενικά είναι προκλητικός. Προσπαθήστε να κοιτάξετε τις προκλήσεις που προκύπτουν ως διασκεδαστικά προβλήματα που πρέπει να επιλυθούν. Προσπαθήστε να δείτε τα λάθη σας μέσα από ένα φακό Bob Ross και να τα δείτε ως <code class="docutils literal notranslate"><span class="pre">ευτυχισμένα</span> <span class="pre">ατυχήματα</span></code>.</p>
+<h2><span class="section-number">1.2.3. </span>Συμπέρασμα<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Εάν σε κάποιο σημείο της διαδικασίας εγκατάστασης νιώσετε απογοήτευση, μην αποθαρρυνθείτε. Δεν είστε μόνοι και δεν είναι μια απλή ή εύκολη διαδικασία. Αυτοί που προγραμματίζουν χρόνια μπορούν να κάνουν αυτά τα βήματα να φαίνονται απλά, αλλά η αντιμετώπιση προβλημάτων μόνοι σας είναι προκλητική. Είναι σημαντικό να θυμάστε ότι ο προγραμματισμός γενικά είναι προκλητικός. Προσπαθήστε να κοιτάξετε τις προκλήσεις που προκύπτουν ως διασκεδαστικά προβλήματα που πρέπει να επιλυθούν.</p>
 </section>
 </section>
 
@@ -658,16 +509,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trinket">1.2.1. Trinket</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">1.2.2. Χρήση του Google Colab</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binder-jupyterbook">1.2.3. Χρήση του Binder από αυτό το JupyterBook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-online">1.2.4. Χρήση Jupyter Notebooks Online</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.5. Εγκατάσταση της Python τοπικά</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anaconda-navigator">1.2.5.1. Λήψη του Anaconda Navigator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.5.2. Χρήση του Anaconda Navigator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.2.5.3. Εγκατάσταση του Jupyter-Lab</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.6. Συμπέρασμα</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.2. Εγκατάσταση της Python τοπικά</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.3. Συμπέρασμα</a></li>
 </ul>
   </nav></div>
 

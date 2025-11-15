@@ -4,4 +4,4 @@
 
 ### <p align="center">Dr. W.J.B. Mattingly</p>
 
-### <p align="center">Μετάφραση: Τάσος Κολυδάς</p>
+### <p align="center">Μετάφραση: Δρ. Τάσος Κολυδάς</p>
