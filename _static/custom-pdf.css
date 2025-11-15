@@ -1,3 +1,8 @@
+/* Hide download buttons */
+.dropdown-download-buttons {
+    display: none !important;
+}
+
 /* Page numbers for PDF */
 @page {
     @bottom-center {
