@@ -1,3 +1,13 @@
+/* Page numbers for PDF */
+@page {
+    @bottom-center {
+        content: counter(page);
+        font-size: 10pt;
+        color: #666;
+    }
+    margin-bottom: 1.5cm;
+}
+
 /* Hide iframes and interactive content from PDF output */
 @media print {
     iframe {
