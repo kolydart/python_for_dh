@@ -14,4 +14,12 @@
     .raw-html {
         display: none !important;
     }
+
+    /* Force show all outputs tagged with hide-output */
+    .tag_hide-output,
+    .tag_hide-input,
+    .tag_hide-cell {
+        display: block !important;
+        visibility: visible !important;
+    }
 }

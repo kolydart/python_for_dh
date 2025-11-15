@@ -2,8 +2,10 @@
 title: Introduction to Python for Humanists
 author: William J.B. Mattingly, Tassos Kolydas (translation)
 # logo: 'images/chapman-logo.jpg'
+
 execute:
   execute_notebooks: 'off'
+
 parse:
   myst_enable_extensions:
     - colon_fence
@@ -13,6 +15,7 @@ parse:
     - tasklist
   myst_substitutions:
     iframe_note: "*(Interactive content available in HTML version)*"
+
 exclude_patterns:
   - venv*
   - .git
@@ -35,10 +38,12 @@ exclude_patterns:
   - 08_booknlp
   - 09_conclusion
   - other
+
 # Information about where the book exists on the web
 repository:
   url: https://github.com/kolydart/python_for_dh # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links (optional)
+
 html:
   use_edit_page_button: false
   use_issues_button: false
