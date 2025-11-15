@@ -1,0 +1,17 @@
+/* Hide iframes and interactive content from PDF output */
+@media print {
+    iframe {
+        display: none !important;
+    }
+
+    /* Hide Trinket embeds specifically */
+    .trinket-embed,
+    [src*="trinket.io"] {
+        display: none !important;
+    }
+
+    /* Hide any raw HTML content */
+    .raw-html {
+        display: none !important;
+    }
+}
