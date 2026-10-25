@@ -8,7 +8,7 @@ Translating all Jupyter notebook (.ipynb) files in the `01_intro` directory from
 - **Technical Terms**: Use format "English term (Greek translation)" on first use, then use Greek
 - **Code Comments**: Translate to Greek
 - **Code String Literals**: Keep as-is (no translation)
-- **Example Values**: Keep original (no localization)
+- **Example Values**: Keep original (no localization). Exception (2026-10-25): in ch. 1.1–1.3 (`01_01-04`, `01_02-02`, `01_03-02`, `01_03-03`) the name examples were replaced with Greek composers («Επώνυμο, Όνομα» catalogue entries, Greek upper/lower case), to match the M320 course notebook `python-vscode.ipynb`
 - **Python Errors/Messages**: Keep in English
 - **Library Names**: Keep in English
 - **Tone**: Academic/scientific (following `/scientific` rules)
